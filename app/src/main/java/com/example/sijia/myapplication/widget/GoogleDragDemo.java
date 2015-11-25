@@ -36,6 +36,7 @@ public class GoogleDragDemo extends LinearLayout {
                 return true;
             case MotionEvent.ACTION_DOWN:
                 final int pointerIndex = MotionEventCompat.getActionIndex(event);
+                mActivePointerId=MotionEventCompat.getPointerId(event,pointerIndex);
                 final float x = MotionEventCompat.getX(event, pointerIndex);
                 final float y = MotionEventCompat.getY(event, pointerIndex);
 
@@ -98,7 +99,6 @@ public class GoogleDragDemo extends LinearLayout {
 
                 final int pointerIndex = MotionEventCompat.getActionIndex(ev);
                 final int pointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
-
                 if (pointerId == mActivePointerId) {
                     // This was our active pointer going up. Choose a new
                     // active pointer and adjust accordingly.
