@@ -5,6 +5,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
@@ -12,6 +13,9 @@ import android.widget.Scroller;
  *
  * http://blog.csdn.net/k1585853768/article/details/50062287
  * 可拖拽内容并有回弹效果的LinearLayout
+ * 当子View的中心超过容器的可见范围，则自动回拉子View
+ * 有一个bug，如果view的中心本来就超过容器的可见范围，则这个容器就失效了
+ *
  * Created by xyb on 2015/11/25.
  */
 public class GoogleDragDemo extends LinearLayout {
@@ -98,13 +102,13 @@ public class GoogleDragDemo extends LinearLayout {
                 // Calculate the distance moved
                 final float dx = x - mLastTouchX;
                 final float dy = y - mLastTouchY;
-                if(getChildCount()!=1){
-                    Log.e("错误","只能有一个视图");
-                   return true;
+                if (getChildCount() != 1) {
+                    Log.e("错误", "只能有一个视图");
+                    return true;
                 }
 
-                //获取子视图
-                LinearLayout view = (LinearLayout) getChildAt(0);
+             //  获取子视图
+                View view = (LinearLayout) getChildAt(0);
 
 
                 //获取子视图中心点
@@ -123,25 +127,29 @@ public class GoogleDragDemo extends LinearLayout {
                 int windowWidth = Util.getWindowWidth(getContext());*/
                 //获取本容器高度
 
+                if (view.getWidth() > getWidth() && view.getHeight() > getHeight()) {//view比容器大
+                    if (centerY <= getTop() && centerX > getLeft()) {//显示下边
+                        mScroller.startScroll(getScrollX(), getScrollY(), 0, (view.getHeight() - getHeight()) - getScrollY());
 
-                if (centerY <= getTop() && centerX > getLeft()) {//显示下边
-                    mScroller.startScroll(getScrollX(), getScrollY(), 0, (view.getHeight() - getHeight()) - getScrollY());
+                        invalidate();
+                        return true;
+                    }
 
+                    if (centerX <= getLeft() || centerY <= getTop()) {//显示右边
+                        mScroller.startScroll(getScrollX(), getScrollY(), (view.getWidth() - getWidth()) - getScrollX(), -getScrollY());
+                        invalidate();
+                        return true;
+                    }
+                    if (centerX >= getRight() || centerY >= getBottom()) {//显示左边
+                        mScroller.startScroll(getScrollX(), getScrollY(), -getScrollX(), -getScrollY());
+                        invalidate();
+                        return true;
+                    }
+                }else if(centerX <= getLeft() || centerY <= getTop()||centerX >= getRight() || centerY >= getBottom()){
+                    mScroller.startScroll(getScrollX(), getScrollY(), -getScrollX(), -getScrollY());//滚回原位
                     invalidate();
                     return true;
                 }
-
-                if (centerX <= getLeft() || centerY <= getTop()) {//显示右边
-                    mScroller.startScroll(getScrollX(), getScrollY(), (view.getWidth() - getWidth()) - getScrollX(), -getScrollY());
-                    invalidate();
-                    return true;
-                }
-                if (centerX >= getRight() || centerY >= getBottom()) {//显示左边
-                    mScroller.startScroll(getScrollX(), getScrollY(), -getScrollX(), -getScrollY());
-                    invalidate();
-                    return true;
-                }
-
 
                 scrollBy((int) (-dx), (int) (-dy));
 
