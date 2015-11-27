@@ -1,10 +1,8 @@
 package com.example.sijia.myapplication.widget;
 
 import android.content.Context;
-import android.support.v4.view.MotionEventCompat;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.widget.Button;
 
 /**
@@ -20,6 +18,20 @@ public class GustureButton extends Button {
 
     public GustureButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        final String xmlns="http://schemas.android.com/apk/res/android";
+        String height = attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "layout_height");
+       int mHeight = attrs.getAttributeIntValue(xmlns, "layout_height", 0);
+        int layout_marginBottom = attrs.getAttributeIntValue(xmlns, "layout_marginBottom", 0);
+        int mMaxEms=attrs.getAttributeIntValue(xmlns,"maxEms",0);
+        int maxHeight=attrs.getAttributeIntValue(xmlns,"maxHeight",0);
+        TypedArray typedArray= context.obtainStyledAttributes(new int[]{android.R.attr.layout_width});
+        int widht= typedArray.getInt(android.R.attr.layout_width,0);
+
+        init();
+
+    }
+
+    private void init() {
 
     }
 
@@ -28,54 +40,7 @@ public class GustureButton extends Button {
         super(context, attrs, defStyleAttr);
     }
 
-    float downPosX;
-    float downPosY;
-    float oriX;
-    float oriY;
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-
-        int action = MotionEventCompat.getActionMasked(event);
-        String DEBUG_TAG = "touch Event";
-
-
-        switch (action) {
-            case (MotionEvent.ACTION_DOWN):
-                deltaX = event.getX();
-                Log.i("downPoterX", deltaX + "");
-            case (MotionEvent.ACTION_MOVE):
-                float nowX = event.getX();
-                float xd = nowX - deltaX;
-
-                setTranslationX(nowX - deltaX);
-
-                Log.i("moveX rawX", nowX + " "+event.getRawX());
-                Log.i("distanceX", xd + "");
-
-
-                return true;
-            case (MotionEvent.ACTION_UP):
-                Log.i(DEBUG_TAG, "Action was UP");
-                return true;
-            case (MotionEvent.ACTION_CANCEL):
-                Log.i(DEBUG_TAG, "Action was CANCEL");
-                return true;
-            case (MotionEvent.ACTION_OUTSIDE):
-                Log.i(DEBUG_TAG, "Movement occurred outside bounds " +
-                        "of current screen element");
-                return true;
-            case (MotionEvent.ACTION_POINTER_DOWN):
-                Log.i(DEBUG_TAG, "ACTION_POINTER_DOWN");
-                break;
-            case (MotionEvent.ACTION_POINTER_UP):
-                Log.i(DEBUG_TAG, "ACTION_POINTER_UP");
-                break;
-            default:
-                return super.onTouchEvent(event);
-        }
-        return false;
-    }
 
 
 }
