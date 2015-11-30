@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         ll.width=ll.width+20;
         ll.height=ll.height+20;
         tv.setLayoutParams(ll);
+        tv.requestLayout();
     }
 
     public void smaller(View view) {

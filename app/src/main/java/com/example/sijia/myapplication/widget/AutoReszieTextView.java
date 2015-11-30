@@ -238,7 +238,8 @@ public class AutoReszieTextView extends TextView {
         // Store the current text size
         float oldTextSize = textPaint.getTextSize();
         // If there is a max text size set, use the lesser of that and the default text size
-        float targetTextSize = mMaxTextSize > 0 ? Math.min(mTextSize, mMaxTextSize) : mTextSize;
+        //// FIXME: 2015/11/30  将mTextSize改为了width
+        float targetTextSize = mMaxTextSize > 0 ? Math.min(mTextSize, mMaxTextSize) : width;
 
         // Get the required text height
         int textHeight = getTextHeight(text, textPaint, width, targetTextSize);
