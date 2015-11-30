@@ -10,12 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.Scroller;
 
 /**
- *
  * http://blog.csdn.net/k1585853768/article/details/50062287
  * 可拖拽内容并有回弹效果的LinearLayout
  * 当子View的中心超过容器的可见范围，则自动回拉子View
- * 有一个bug，如果view的中心本来就超过容器的可见范围，则这个容器就失效了
+ * bug1，如果view的中心本来就超过容器的可见范围，则这个容器就失效了
+ * 修复bug1
  *
+ * <p/>
  * Created by xyb on 2015/11/25.
  */
 public class GoogleDragDemo extends LinearLayout {
@@ -23,7 +24,7 @@ public class GoogleDragDemo extends LinearLayout {
     private float mLastTouchX;
     private float mLastTouchY;
     private Scroller mScroller;
-
+    private final int OFFSET = 80;
 
     public GoogleDragDemo(Context context) {
         super(context);
@@ -84,6 +85,7 @@ public class GoogleDragDemo extends LinearLayout {
         // Let the ScaleGestureDetector inspect all events.
         // mScaleDetector.onTouchEvent(ev);
 
+        Log.i("scroll",getScrollX()+" ");
         final int action = MotionEventCompat.getActionMasked(ev);
 
         switch (action) {
@@ -95,7 +97,6 @@ public class GoogleDragDemo extends LinearLayout {
                 // Find the index of the active pointer and fetch its position
                 final int pointerIndex =
                         MotionEventCompat.findPointerIndex(ev, mActivePointerId);
-
                 final float x = MotionEventCompat.getX(ev, pointerIndex);
                 final float y = MotionEventCompat.getY(ev, pointerIndex);
 
@@ -106,51 +107,42 @@ public class GoogleDragDemo extends LinearLayout {
                     Log.e("错误", "只能有一个视图");
                     return true;
                 }
-
-             //  获取子视图
-                View view = (LinearLayout) getChildAt(0);
-
-
-                //获取子视图中心点
-                int[] arrs = new int[2];
-                view.getLocationOnScreen(arrs);
-                int viewX = arrs[0];
-                int viewY = arrs[1];
-                int centerX = ((viewX + view.getWidth()) + viewX) / 2;
-                int centerY = ((viewY + view.getHeight()) + viewY) / 2;
-                Log.i("viewX,viewY", "" + viewX + " " + centerY);
-                Log.i("getWidth(),getHeight", "" + getWidth() + " " + getHeight());
-                Log.i("xx", "" + centerX + " " + centerY);
-
+                //  获取子视图
+                View view = getChildAt(0);
                 //获取屏幕宽度
               /*  int windowHeight = Util.getWindowHeight(getContext());
                 int windowWidth = Util.getWindowWidth(getContext());*/
                 //获取本容器高度
-
                 if (view.getWidth() > getWidth() && view.getHeight() > getHeight()) {//view比容器大
-                    if (centerY <= getTop() && centerX > getLeft()) {//显示下边
-                        mScroller.startScroll(getScrollX(), getScrollY(), 0, (view.getHeight() - getHeight()) - getScrollY());
-
-                        invalidate();
-                        return true;
-                    }
-
-                    if (centerX <= getLeft() || centerY <= getTop()) {//显示右边
-                        mScroller.startScroll(getScrollX(), getScrollY(), (view.getWidth() - getWidth()) - getScrollX(), -getScrollY());
-                        invalidate();
-                        return true;
-                    }
-                    if (centerX >= getRight() || centerY >= getBottom()) {//显示左边
+                    Log.i("Bottom position", view.getBottom() + " ");
+                    int heightDiff = view.getHeight() - getHeight();
+                    int widthDiff=view.getWidth() - getWidth();
+                    if (getScrollX() < 0 && Math.abs(getScrollX()) >= OFFSET) {//左边拉得太多
                         mScroller.startScroll(getScrollX(), getScrollY(), -getScrollX(), -getScrollY());
                         invalidate();
                         return true;
                     }
-                }else if(centerX <= getLeft() || centerY <= getTop()||centerX >= getRight() || centerY >= getBottom()){
+                    if (getScrollX() > 0 && Math.abs(getScrollX()) - (widthDiff) >= OFFSET) {//右边拉得太多
+                        mScroller.startScroll(getScrollX(), getScrollY(), (view.getWidth() - getWidth()) - getScrollX(), -getScrollY());
+                        invalidate();
+                        return true;
+                    }
+
+                    if ((getScrollY() < 0 && Math.abs(getScrollY()) >= OFFSET)) {//上边拉得太多
+                        mScroller.startScroll(getScrollX(), getScrollY(), 0, -getScrollY());
+                        invalidate();
+                        return true;
+                    }
+
+                    if (getScrollY() > 0 && Math.abs(getScrollY()) - (heightDiff) >= OFFSET) {//下边拉得太多
+                        mScroller.startScroll(getScrollX(), getScrollY(), 0, -getScrollY() + view.getHeight() - getHeight());
+                    }
+                } else {
                     mScroller.startScroll(getScrollX(), getScrollY(), -getScrollX(), -getScrollY());//滚回原位
                     invalidate();
                     return true;
                 }
-
+                Log.i("ScrollByX",-dx+" ");
                 scrollBy((int) (-dx), (int) (-dy));
 
                 invalidate();
