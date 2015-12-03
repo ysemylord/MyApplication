@@ -31,6 +31,7 @@ public class DrageAndZoomViewG extends LinearLayout {
     public DrageAndZoomViewG(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
+        View view;
     }
 
     private void init(Context context) {

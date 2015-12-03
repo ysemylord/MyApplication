@@ -307,6 +307,7 @@ public class AutoReszieTextView extends TextView {
         // Measure using a static layout
         StaticLayout layout = new StaticLayout(source, paintCopy, width, Layout.Alignment.ALIGN_NORMAL, mSpacingMult, mSpacingAdd, true);
         return layout.getHeight();
+
     }
 
 }
