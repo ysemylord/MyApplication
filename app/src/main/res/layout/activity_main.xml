@@ -6,10 +6,10 @@
     android:background="@android:color/holo_blue_bright"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:weightSum="1">
+   >
 
 
-      <com.example.sijia.myapplication.widget.AutoReszieTextView
+  <!--    <com.example.sijia.myapplication.widget.AutoReszieTextView
           android:layout_width="100dp"
           android:layout_height="60dp"
           android:id="@+id/text"
@@ -37,8 +37,13 @@
         android:layout_height="wrap_content"
         android:text="缩小"
         android:onClick="smaller"
-        android:id="@+id/button2" />
+        android:id="@+id/button2" />-->
 
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wifiBut"
+        android:onClick="jumpToWifiS"
+        android:id="@+id/button" />
 </LinearLayout>

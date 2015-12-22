@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:id="@+id/inspire_tab"
             android:drawableTop="@drawable/home_tab_inspire_selector"
             android:textSize="0sp" />
 
@@ -30,6 +31,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:checked="false"
+            android:id="@+id/camera_tab"
             android:drawableTop="@drawable/home_tab_camera_selector"
             android:textSize="0sp" />
 
@@ -40,16 +42,17 @@
             android:button="@null"
             android:drawableTop="@drawable/home_tab_explore_selector"
             android:gravity="center"
+            android:id="@+id/explore_tab"
             android:text="fdf"
             android:textColor="@android:color/white"
             android:textSize="0sp" />
     </RadioGroup>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/rg"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></android.support.v4.view.ViewPager>
+        android:layout_alignParentStart="true"></FrameLayout>
 </RelativeLayout>

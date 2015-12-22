@@ -24,4 +24,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':autoresizetextview')
+    compile files('src/main/libs/butterknife-7.0.1.jar')
 }
