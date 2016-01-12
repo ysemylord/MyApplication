@@ -1,2 +1,2 @@
-include ':app', ':autoresizetextview', ':TabHost', ':WechatTab', ':cameramine'
+include ':app', ':TabHost', ':WechatTab', ':cameramine'
 include ':wifiConnecter'

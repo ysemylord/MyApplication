@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/TabHost/TabHost.iml" filepath="$PROJECT_DIR$/TabHost/TabHost.iml" />
       <module fileurl="file://$PROJECT_DIR$/WechatTab/WechatTab.iml" filepath="$PROJECT_DIR$/WechatTab/WechatTab.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/autoresizetextview/autoresizetextview.iml" filepath="$PROJECT_DIR$/autoresizetextview/autoresizetextview.iml" />
       <module fileurl="file://$PROJECT_DIR$/cameramine/cameramine.iml" filepath="$PROJECT_DIR$/cameramine/cameramine.iml" />
       <module fileurl="file://$PROJECT_DIR$/wifiConnecter/wifiConnecter.iml" filepath="$PROJECT_DIR$/wifiConnecter/wifiConnecter.iml" />
     </modules>

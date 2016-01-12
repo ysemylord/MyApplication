@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/codeGitHub/MyApplication/wifiConnecter/src/main/res/values/strings.xml -->
+    <!-- From: file:/E:/Democode/MyApplication/wifiConnecter/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">WifiConnecter</string>
     <string name="connect">Connect</string>
     <string name="current_ssid">Current SSID: %1$s</string>
     <string name="hint_password">Password</string>
     <string name="hint_ssid">SSID</string>
-    <!-- From: file:/E:/codeGitHub/MyApplication/wifiConnecter/src/main/res/values/styles.xml -->
+    <!-- From: file:/E:/Democode/MyApplication/wifiConnecter/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!--

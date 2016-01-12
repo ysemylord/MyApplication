@@ -30,4 +30,4 @@
         android:onClick="connect"
         android:text="@string/connect" />
 
-</LinearLayout><!-- From: file:/E:/codeGitHub/MyApplication/wifiConnecter/src/main/res/layout/activity_test.xml -->
+</LinearLayout><!-- From: file:/E:/Democode/MyApplication/wifiConnecter/src/main/res/layout/activity_test.xml -->
