@@ -4,7 +4,12 @@
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark"
     tools:context="com.example.sijia.myapplication.ListViewHeaderZomTestActivity">
 
+    <com.example.sijia.myapplication.widget.PullToZoomListViewDemo
+        android:id="@+id/test_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.example.sijia.myapplication.widget.PullToZoomListViewDemo>
 </RelativeLayout>
