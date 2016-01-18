@@ -51,10 +51,6 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
         mArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, datas);
         mListView.setAdapter(mArrayAdapter);
 
-        //todo 自定义头部
-      /* View viewHeader= LayoutInflater.from(this).inflate(R.layout.layout_custom_ptf_header,null);
-        mPtrClassicFrameLayout.setHeaderView(viewHeader);*/
-
         mPtrClassicFrameLayout.setLoadingMinTime(1000);
         mPtrClassicFrameLayout.setPtrHandler(new PtrHandler() {
             @Override
@@ -67,86 +63,53 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 datas.clear();
-
-                final String goodsUrl = "http://chuanchi.test.kh888.cn//app/index.php?act=goods&op=goods_list&page=" + mNumInPage + "&curpage=" + (mCurPage++) + "&gc_id=258";
-                StringRequest goodsRequest = new StringRequest(Request.Method.GET, goodsUrl, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("goodsUrl", response);
-
-                        try {
-                            int originalLength=datas.size();
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONObject("datas").getJSONArray("goods_list");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                datas.add(jsonArray.getJSONObject(i).getString("goods_name"));
-                            }
-                            mArrayAdapter.notifyDataSetChanged();
-                            mPtrClassicFrameLayout.refreshComplete();
-                            loadMoreListViewContainer.loadMoreFinish(jsonArray.length() == 0 ? true : false, originalLength==datas.size()?false:true);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("请求错误", error.getMessage());
-                    }
-                });
-
-                VolleyQuenueInstence.getInstance(PullToRefreshDividePageDemoActivity.this).add(goodsRequest);
+                mCurPage=1;
+                querydata();
             }
 
         });
 
-
         // load more container
         loadMoreListViewContainer = (LoadMoreListViewContainer) findViewById(R.id.load_more_list_view_container);
-        // loadMoreListViewContainer.useDefaultFooter();
-
-        //todo 自定义footer
-/*        CustomLoadMoreFooterView footerView = new CustomLoadMoreFooterView(this);
-        footerView.setVisibility(View.GONE);
-        loadMoreListViewContainer.setLoadMoreView(footerView);
-        loadMoreListViewContainer.setLoadMoreUIHandler(footerView);*/
-
-
+        loadMoreListViewContainer.useDefaultFooter();
         loadMoreListViewContainer.setLoadMoreHandler(new LoadMoreHandler() {
             @Override
             public void onLoadMore(LoadMoreContainer loadMoreContainer) {
                 Log.i("onLoadMore", "onLoadMore");
-
-                final String goodsUrl = "http://chuanchi.test.kh888.cn//app/index.php?act=goods&op=goods_list&page=" + mNumInPage + "&curpage=" + (mCurPage++) + "&gc_id=258";
-                StringRequest goodsRequest = new StringRequest(Request.Method.GET, goodsUrl, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("goodsUrl", response);
-                        int originalLength=datas.size();
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONObject("datas").getJSONArray("goods_list");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                datas.add(jsonArray.getJSONObject(i).getString("goods_name"));
-                            }
-                            mArrayAdapter.notifyDataSetChanged();
-                            loadMoreListViewContainer.loadMoreFinish(jsonArray.length()==0?true:false,originalLength==datas.size()?false:true);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("请求错误", error.getMessage());
-                    }
-                });
-
-                VolleyQuenueInstence.getInstance(PullToRefreshDividePageDemoActivity.this).add(goodsRequest);
-
-
+                querydata();
             }
         });
         mPtrClassicFrameLayout.autoRefresh();
+    }
+
+    private void querydata() {
+        final String goodsUrl = "http://chuanchi.test.kh888.cn//app/index.php?act=goods&op=goods_list&page=" + mNumInPage + "&curpage=" + (mCurPage++) + "&gc_id=258";
+        StringRequest goodsRequest = new StringRequest(Request.Method.GET, goodsUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("goodsUrl", response);
+
+                try {
+                    int originalLength=datas.size();
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONObject("datas").getJSONArray("goods_list");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        datas.add(jsonArray.getJSONObject(i).getString("goods_name"));
+                    }
+                    mArrayAdapter.notifyDataSetChanged();
+                    mPtrClassicFrameLayout.refreshComplete();
+                    loadMoreListViewContainer.loadMoreFinish(datas.size()==0?true:false,originalLength==datas.size()?false:true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("请求错误", error.getMessage());
+            }
+        });
+
+        VolleyQuenueInstence.getInstance(PullToRefreshDividePageDemoActivity.this).add(goodsRequest);
     }
 }

@@ -28,7 +28,11 @@ public class PullToRefreshDemoActivity extends Activity {
     private LoadMoreListViewContainer loadMoreListViewContainer;
 
     //注意:如果想使列表响“应加载更多”事件，则必须在onRefreshBegin和onLoadMore函数中调用loadMoreListViewContainer.loadMoreFinish
-    //函数，当讲参数hasMore设为true时才会加载更多数据
+    /**
+         LoadMoreDefaultFooterView#LoadMoreDefaultFooterView
+         当empty为true表示总的数据量为0
+         当讲参数hasMore设为true时才会加载更多数据
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +75,7 @@ public class PullToRefreshDemoActivity extends Activity {
 
         // load more container
         loadMoreListViewContainer = (LoadMoreListViewContainer) findViewById(R.id.load_more_list_view_container);
-       // loadMoreListViewContainer.useDefaultFooter();
+        loadMoreListViewContainer.useDefaultFooter();
 
        //todo 自定义footer
 /*        CustomLoadMoreFooterView footerView = new CustomLoadMoreFooterView(this);
@@ -92,7 +96,7 @@ public class PullToRefreshDemoActivity extends Activity {
                             datas.add(Math.random() + "");
                         }
                         mArrayAdapter.notifyDataSetChanged();
-                        loadMoreListViewContainer.loadMoreFinish(false, true);
+                        loadMoreListViewContainer.loadMoreFinish(datas.size()==0?true:false, true);
                     }
                 }, 1000);
             }
