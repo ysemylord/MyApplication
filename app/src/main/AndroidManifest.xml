@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sijia.myapplication" >
+    package="com.example.sijia.myapplication">
 
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -20,8 +20,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
 
             <!--
                 <intent-filter>
@@ -32,10 +32,8 @@
             -->
         </activity>
         <activity android:name=".WifiActivity" />
-        <activity android:name=".ViewPagerActivity" >
-
-        </activity>
-        <activity android:name=".DialogActivity" >
+        <activity android:name=".ViewPagerActivity"></activity>
+        <activity android:name=".DialogActivity">
 
             <!--
                 <intent-filter>
@@ -45,7 +43,8 @@
             </intent-filter>
             -->
         </activity>
-<!--        <activity android:name=".VolleyActivity" />
+        <!--
+            <activity android:name=".VolleyActivity" />
         <activity android:name=".TestActivity" >
 
             &lt;!&ndash;
@@ -56,11 +55,18 @@
             </intent-filter>
             &ndash;&gt;
         </activity>
-        <activity android:name=".AnimationActivity" />-->
-        <activity android:name=".ListViewHeaderZomTestActivity" >
+        <activity android:name=".AnimationActivity" />
+        -->
+        <activity android:name=".ListViewHeaderZomTestActivity">
+
+        </activity>
+        <activity android:name=".PullToRefreshDemoActivity">
+
+        </activity>
+
+        <activity android:name=".PullToRefreshDividePageDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -83,4 +83,5 @@ public class BaseMyDialog extends AlertDialog {
         getWindow().setAttributes(lp);
 
     }
+
 }
