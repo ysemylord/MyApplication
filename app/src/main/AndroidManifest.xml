@@ -32,7 +32,7 @@
             -->
         </activity>
         <activity android:name=".WifiActivity" />
-        <activity android:name=".ViewPagerActivity"></activity>
+        <activity android:name=".ViewPagerActivity" />
         <activity android:name=".DialogActivity">
 
             <!--
@@ -57,18 +57,17 @@
         </activity>
         <activity android:name=".AnimationActivity" />
         -->
-        <activity android:name=".ListViewHeaderZomTestActivity">
-
-        </activity>
-        <activity android:name=".PullToRefreshDemoActivity">
-
-        </activity>
-
+        <activity android:name=".ListViewHeaderZomTestActivity"></activity>
+        <activity android:name=".PullToRefreshDemoActivity"></activity>
         <activity android:name=".PullToRefreshDividePageDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".FlowRadioButtonActivity">
+
         </activity>
     </application>
 

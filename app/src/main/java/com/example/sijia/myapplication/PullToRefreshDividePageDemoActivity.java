@@ -68,34 +68,7 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
             public void onRefreshBegin(PtrFrameLayout frame) {
                 datas.clear();
 
-                final String goodsUrl = "http://chuanchi.test.kh888.cn//app/index.php?act=goods&op=goods_list&page=" + mNumInPage + "&curpage=" + (mCurPage++) + "&gc_id=258";
-                StringRequest goodsRequest = new StringRequest(Request.Method.GET, goodsUrl, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("goodsUrl", response);
-
-                        try {
-                            int originalLength=datas.size();
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONObject("datas").getJSONArray("goods_list");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                datas.add(jsonArray.getJSONObject(i).getString("goods_name"));
-                            }
-                            mArrayAdapter.notifyDataSetChanged();
-                            mPtrClassicFrameLayout.refreshComplete();
-                            loadMoreListViewContainer.loadMoreFinish(jsonArray.length() == 0 ? true : false, originalLength==datas.size()?false:true);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("请求错误", error.getMessage());
-                    }
-                });
-
-                VolleyQuenueInstence.getInstance(PullToRefreshDividePageDemoActivity.this).add(goodsRequest);
+                queryData();
             }
 
         });
@@ -103,7 +76,7 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
 
         // load more container
         loadMoreListViewContainer = (LoadMoreListViewContainer) findViewById(R.id.load_more_list_view_container);
-        // loadMoreListViewContainer.useDefaultFooter();
+        loadMoreListViewContainer.useDefaultFooter();
 
         //todo 自定义footer
 /*        CustomLoadMoreFooterView footerView = new CustomLoadMoreFooterView(this);
@@ -117,36 +90,42 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
             public void onLoadMore(LoadMoreContainer loadMoreContainer) {
                 Log.i("onLoadMore", "onLoadMore");
 
-                final String goodsUrl = "http://chuanchi.test.kh888.cn//app/index.php?act=goods&op=goods_list&page=" + mNumInPage + "&curpage=" + (mCurPage++) + "&gc_id=258";
-                StringRequest goodsRequest = new StringRequest(Request.Method.GET, goodsUrl, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("goodsUrl", response);
-                        int originalLength=datas.size();
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONObject("datas").getJSONArray("goods_list");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                datas.add(jsonArray.getJSONObject(i).getString("goods_name"));
-                            }
-                            mArrayAdapter.notifyDataSetChanged();
-                            loadMoreListViewContainer.loadMoreFinish(jsonArray.length()==0?true:false,originalLength==datas.size()?false:true);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("请求错误", error.getMessage());
-                    }
-                });
-
-                VolleyQuenueInstence.getInstance(PullToRefreshDividePageDemoActivity.this).add(goodsRequest);
+                queryData();
 
 
             }
         });
         mPtrClassicFrameLayout.autoRefresh();
+    }
+
+    private void queryData() {
+        final String goodsUrl = "http://chuanchi.test.kh888.cn//app/index.php?act=goods&op=goods_list&page=" + mNumInPage + "&curpage=" + (mCurPage++) + "&gc_id=258";
+        StringRequest goodsRequest = new StringRequest(Request.Method.GET, goodsUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("goodsUrl", response);
+
+                try {
+                    int originalLength=datas.size();
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONObject("datas").getJSONArray("goods_list");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        datas.add(jsonArray.getJSONObject(i).getString("goods_name"));
+                    }
+                    mArrayAdapter.notifyDataSetChanged();
+                    mPtrClassicFrameLayout.refreshComplete();
+                    loadMoreListViewContainer.loadMoreFinish(datas.size() == 0 ? true : false, originalLength==datas.size()?false:true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("请求错误", error.getMessage());
+            }
+        });
+
+        VolleyQuenueInstence.getInstance(PullToRefreshDividePageDemoActivity.this).add(goodsRequest);
     }
 }
