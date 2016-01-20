@@ -57,18 +57,21 @@
         </activity>
         <activity android:name=".AnimationActivity" />
         -->
-        <activity android:name=".ListViewHeaderZomTestActivity"></activity>
-        <activity android:name=".PullToRefreshDemoActivity"></activity>
+
+        <activity android:name=".PullToRefreshDemoActivity" />
         <activity android:name=".PullToRefreshDividePageDemoActivity">
+
+        </activity>
+        <activity android:name=".FlowRadioButtonActivity"></activity>
+        <activity android:name=".RecyclerViewDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".FlowRadioButtonActivity">
 
         </activity>
     </application>
+
 
 </manifest>
