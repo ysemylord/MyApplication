@@ -51,6 +51,10 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
         mArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, datas);
         mListView.setAdapter(mArrayAdapter);
 
+        //todo 自定义头部
+      /* View viewHeader= LayoutInflater.from(this).inflate(R.layout.layout_custom_ptf_header,null);
+        mPtrClassicFrameLayout.setHeaderView(viewHeader);*/
+
         mPtrClassicFrameLayout.setLoadingMinTime(1000);
         mPtrClassicFrameLayout.setPtrHandler(new PtrHandler() {
             @Override
@@ -63,26 +67,38 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 datas.clear();
-                mCurPage=1;
-                querydata();
+
+                queryData();
             }
 
         });
 
+
         // load more container
         loadMoreListViewContainer = (LoadMoreListViewContainer) findViewById(R.id.load_more_list_view_container);
         loadMoreListViewContainer.useDefaultFooter();
+
+        //todo 自定义footer
+/*        CustomLoadMoreFooterView footerView = new CustomLoadMoreFooterView(this);
+        footerView.setVisibility(View.GONE);
+        loadMoreListViewContainer.setLoadMoreView(footerView);
+        loadMoreListViewContainer.setLoadMoreUIHandler(footerView);*/
+
+
         loadMoreListViewContainer.setLoadMoreHandler(new LoadMoreHandler() {
             @Override
             public void onLoadMore(LoadMoreContainer loadMoreContainer) {
                 Log.i("onLoadMore", "onLoadMore");
-                querydata();
+
+                queryData();
+
+
             }
         });
         mPtrClassicFrameLayout.autoRefresh();
     }
 
-    private void querydata() {
+    private void queryData() {
         final String goodsUrl = "http://chuanchi.test.kh888.cn//app/index.php?act=goods&op=goods_list&page=" + mNumInPage + "&curpage=" + (mCurPage++) + "&gc_id=258";
         StringRequest goodsRequest = new StringRequest(Request.Method.GET, goodsUrl, new Response.Listener<String>() {
             @Override
@@ -98,7 +114,7 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
                     }
                     mArrayAdapter.notifyDataSetChanged();
                     mPtrClassicFrameLayout.refreshComplete();
-                    loadMoreListViewContainer.loadMoreFinish(datas.size()==0?true:false,originalLength==datas.size()?false:true);
+                    loadMoreListViewContainer.loadMoreFinish(datas.size() == 0 ? true : false, originalLength==datas.size()?false:true);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
