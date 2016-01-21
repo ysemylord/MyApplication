@@ -26,6 +26,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     /**
      * 创建ViewHolder并且，view会交由LayoutManaer管理
+     *
      * @param parent
      * @param viewType
      * @return
@@ -56,8 +57,5 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             super(itemView);
             mTextView = (TextView) itemView.findViewById(R.id.text_view);
         }
-
-
-
     }
 }

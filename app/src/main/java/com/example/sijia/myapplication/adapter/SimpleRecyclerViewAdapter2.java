@@ -12,17 +12,18 @@ import java.util.List;
 /**
  * Created by xu on 2016/1/20.
  */
-public abstract class SimpleRecyclerViewAdapter<T> extends RecyclerView.Adapter<SimpleRecyclerViewAdapter.SimpleViewHolder> {
+public abstract class SimpleRecyclerViewAdapter2<T> extends RecyclerView.Adapter<SimpleRecyclerViewAdapter2.SimpleViewHolder> implements View.OnClickListener{
 
     private Context mContext;
     private List<T> mList;
     private int mResourceId;
-
-    public SimpleRecyclerViewAdapter(Context context, List<T> list, int resourceId) {
+    private OnRecyclerViewItemClickListener mOnRecyclerViewItemClickListener;
+    public SimpleRecyclerViewAdapter2(Context context, List<T> list, int resourceId) {
         mContext = context;
         mList = list;
-        mResourceId = resourceId;
+        mResourceId=resourceId;
     }
+
 
 
     /**
@@ -36,19 +37,34 @@ public abstract class SimpleRecyclerViewAdapter<T> extends RecyclerView.Adapter<
     public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(mResourceId, parent, false);
         SimpleViewHolder viewHolder = new SimpleViewHolder(view);
-
         return viewHolder;
     }
 
     //将数据与界面进行绑定的操作
     @Override
-    public void onBindViewHolder(SimpleViewHolder holder, int position) {
-
+    public void onBindViewHolder(SimpleViewHolder holder,  int position) {
+            if(mOnRecyclerViewItemClickListener!=null){
+                holder.itemView.setOnClickListener(this);
+                holder.itemView.setTag(mList.get(position));
+            }
     }
+
+
 
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener<T> onRecyclerViewItemClickListener){
+            mOnRecyclerViewItemClickListener=onRecyclerViewItemClickListener;
+    }
+    @Override
+    public void onClick(View v) {
+        if (mOnRecyclerViewItemClickListener != null) {
+            //注意这里使用getTag方法获取数据
+            mOnRecyclerViewItemClickListener.onItemClick(v,v.getTag());
+        }
     }
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
@@ -70,5 +86,9 @@ public abstract class SimpleRecyclerViewAdapter<T> extends RecyclerView.Adapter<
         }
     }
 
+    //define interface
+    public  static interface OnRecyclerViewItemClickListener<T> {
+        void onItemClick(View view,  T data);
+    }
 
 }

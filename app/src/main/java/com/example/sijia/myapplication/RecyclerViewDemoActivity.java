@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.sijia.myapplication.adapter.SimpleRecyclerViewAdapter;
+import com.example.sijia.myapplication.adapter.SimpleRecyclerViewAdapter2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +39,29 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         for(int i=0;i<100;i++){
             mList.add(""+i);
         }
-        SimpleRecyclerViewAdapter myRecyclerViewAdapter = new SimpleRecyclerViewAdapter<String>(this,mList,R.layout.recycler_item){
+/*        SimpleRecyclerViewAdapter myRecyclerViewAdapter = new SimpleRecyclerViewAdapter<String>(this,mList,R.layout.recycler_item){
             @Override
             public void onBindViewHolder(SimpleViewHolder holder, int position) {
                 TextView textView=holder.getView(R.id.text_view);
                 textView.setText(mList.get(position));
             }
         };
-          recyclerRecyclerView.setAdapter(myRecyclerViewAdapter);
-        }
+          recyclerRecyclerView.setAdapter(myRecyclerViewAdapter);*/
+        SimpleRecyclerViewAdapter2 myRecyclerViewAdapter2 = new SimpleRecyclerViewAdapter2<String>(this,mList,R.layout.recycler_item){
+            @Override
+            public void onBindViewHolder(SimpleViewHolder holder, int position) {
+                super.onBindViewHolder(holder,position);
+                TextView textView=holder.getView(R.id.text_view);
+                textView.setText(mList.get(position));
+            }
+        };
+
+        myRecyclerViewAdapter2.setOnRecyclerViewItemClickListener(new SimpleRecyclerViewAdapter2.OnRecyclerViewItemClickListener<String>() {
+            @Override
+            public void onItemClick(View view, String data) {
+                Toast.makeText(RecyclerViewDemoActivity.this,data,Toast.LENGTH_SHORT).show();
+            }
+        });
+        recyclerRecyclerView.setAdapter(myRecyclerViewAdapter2);
+    }
 }

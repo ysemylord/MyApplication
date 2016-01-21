@@ -11,7 +11,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.sijia.myapplication.model.Product;
 import com.example.sijia.myapplication.util.VolleyQuenueInstence;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +38,7 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
     private LoadMoreListViewContainer loadMoreListViewContainer;
     private int mNumInPage = 4;
     private int mCurPage = 1;
-
+    List<Product.DatasEntity.GoodsListEntity> mGoodsList;
     //注意:如果想使列表响“应加载更多”事件，则必须在onRefreshBegin和onLoadMore函数中调用loadMoreListViewContainer.loadMoreFinish
     //函数，当讲参数hasMore设为true时才会加载更多数据
 
@@ -47,7 +49,7 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
         mPtrClassicFrameLayout = (PtrClassicFrameLayout) findViewById(R.id.load_more_list_view_ptr_frame);
         mListView = (ListView) findViewById(R.id.load_more_small_image_list_view);
         datas = new ArrayList<>();
-
+        mGoodsList=new ArrayList<>();
         mArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, datas);
         mListView.setAdapter(mArrayAdapter);
 
@@ -104,6 +106,12 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
             @Override
             public void onResponse(String response) {
                 Log.i("goodsUrl", response);
+                Gson gson=new Gson();
+                Product product=gson.fromJson(response,Product.class);
+                Product.DatasEntity datasEntity=product.getDatas();
+                List<Product.DatasEntity.GoodsListEntity> goodsList=datasEntity.getGoods_list();
+                mGoodsList.addAll(goodsList);
+
 
                 try {
                     int originalLength=datas.size();
