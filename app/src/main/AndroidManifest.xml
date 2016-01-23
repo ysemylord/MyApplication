@@ -60,10 +60,6 @@
 
         <activity android:name=".PullToRefreshDemoActivity" />
         <activity android:name=".PullToRefreshDividePageDemoActivity">
-
-        </activity>
-        <activity android:name=".FlowRadioButtonActivity"></activity>
-        <activity android:name=".RecyclerViewDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,7 +67,10 @@
             </intent-filter>
 
         </activity>
-    </application>
+        <activity android:name=".FlowRadioButtonActivity" />
+        <activity android:name=".RecyclerViewDemoActivity">
 
+        </activity>
+    </application>
 
 </manifest>
