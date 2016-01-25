@@ -59,16 +59,19 @@
         -->
 
         <activity android:name=".PullToRefreshDemoActivity" />
-        <activity android:name=".PullToRefreshDividePageDemoActivity">
+        <activity android:name=".PullToRefreshDividePageDemoActivity"></activity>
+        <activity android:name=".FlowRadioButtonActivity" />
+        <activity android:name=".RecyclerViewDemoActivity" />
+        <activity android:name=".FloatTopActivity">
 
         </activity>
-        <activity android:name=".FlowRadioButtonActivity" />
-        <activity android:name=".RecyclerViewDemoActivity"></activity>
-        <activity android:name=".FloatTopActivity">
+        <activity android:name=".RollViewPageDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 
