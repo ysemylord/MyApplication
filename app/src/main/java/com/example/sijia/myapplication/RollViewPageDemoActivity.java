@@ -93,7 +93,7 @@ public class RollViewPageDemoActivity extends AppCompatActivity {
             ImageLoaderConfiguration configuration = ImageLoaderConfiguration
                     .createDefault(RollViewPageDemoActivity.this);
 
-            //Initialize ImageLoader with configuration.
+            //Initialize ImageLoader with configuration.//
             ImageLoader.getInstance().init(configuration);
             ImageLoader.getInstance().displayImage(mImageUrls.get(position), view);
             view.setScaleType(ImageView.ScaleType.CENTER_CROP);
