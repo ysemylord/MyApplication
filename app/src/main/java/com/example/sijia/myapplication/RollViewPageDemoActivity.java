@@ -13,6 +13,7 @@ import com.jude.rollviewpager.hintview.IconHintView;
 /**
  * 地址
  * http://p.codekk.com/detail/Android/Jude95/RollViewPager
+ * gdfg
  */
 public class RollViewPageDemoActivity extends AppCompatActivity {
     private RollPagerView mRollPagerView;
