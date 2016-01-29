@@ -59,7 +59,13 @@
         -->
 
         <activity android:name=".PullToRefreshDemoActivity" />
-        <activity android:name=".PullToRefreshDividePageDemoActivity" />
+        <activity android:name=".PullToRefreshDividePageDemoActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".FlowRadioButtonActivity" />
         <activity android:name=".RecyclerViewDemoActivity" />
         <activity android:name=".FloatTopActivity"></activity>
@@ -69,11 +75,7 @@
         <activity android:name=".ScrollLisenerActivity"
                   android:theme="@android:style/Theme.NoTitleBar"
             >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

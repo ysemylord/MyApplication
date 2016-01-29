@@ -14,6 +14,7 @@ import com.example.sijia.myapplication.adapter.TestSimpleListViewBaseAdapter;
 import com.example.sijia.myapplication.model.Product;
 import com.example.sijia.myapplication.util.VolleyQuenueInstence;
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +100,8 @@ public class PullToRefreshDividePageDemoActivity extends Activity {
             @Override
             public void onResponse(String response) {
                 Log.i("goodsUrl", response);
+                Logger.init("json_format");
+                Logger.json(response);
                 Gson gson=new Gson();
                 Product product=gson.fromJson(response, Product.class);
                 Product.DatasEntity datasEntity=product.getDatas();

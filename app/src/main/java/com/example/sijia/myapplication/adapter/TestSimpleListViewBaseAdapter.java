@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.sijia.myapplication.R;
 import com.example.sijia.myapplication.model.Product;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.List;
 
@@ -25,6 +26,10 @@ public class TestSimpleListViewBaseAdapter extends SimpleListViewBaseAdapter<Pro
         TextView mTextView = holder.getView(R.id.name);
         ImageView iamge = holder.getView(R.id.image);
         mTextView.setText(goodsListEntity.getGoods_name());
+        //创建默认的ImageLoader配置参数
+        ImageLoaderConfiguration configuration = ImageLoaderConfiguration
+                .createDefault(context);
+        ImageLoader.getInstance().init(configuration);
         ImageLoader.getInstance().displayImage(goodsListEntity.getGoods_image_url(), iamge);
         return convertView;
     }
