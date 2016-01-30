@@ -32,7 +32,7 @@ public class DrawerLayoutDemoActivity extends Activity {
 
             @Override
             public void onDrawerStateChanged(int newState) {
-
+        //
             }
         });
     }
