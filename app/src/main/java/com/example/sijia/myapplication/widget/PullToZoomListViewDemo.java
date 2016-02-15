@@ -43,10 +43,14 @@ public class PullToZoomListViewDemo extends ListView {
         TAG = getClass().getSimpleName();
         mHeaderContainer = new FrameLayout(mContext);
         mImageView = new ImageView(mContext);
+
         mImageView.setImageResource((R.mipmap.splash01));
         mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        mHeaderContainer.addView(mImageView);
-     //   mHeaderContainerHeight=mHeaderContainer.getLayoutParams().height;
+
+
+        ViewGroup.LayoutParams layoutParams=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        mHeaderContainer.addView(mImageView,layoutParams);
+        //与mHeaderContainer.addView(mImageView）展示效果一样，侧面证实了new ImageView(Context)的layout_width与height为Mathc_Parent
         setHeaderSize();
         addHeaderView(mHeaderContainer);
 
@@ -81,17 +85,13 @@ public class PullToZoomListViewDemo extends ListView {
                /* final int pointerIndex1 = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
                 float moveY = MotionEventCompat.getY(ev, pointerIndex1);*/
                 float moveY=ev.getY();
+                if(moveY-mLastY<0)
+                    return super.onTouchEvent(ev);
                 ViewGroup.LayoutParams layoutParams=mHeaderContainer.getLayoutParams();
                 Log.i(TAG+"  before", layoutParams.height+"");
                 Log.i(TAG+" mHeaderContainerHeight", mHeaderContainerHeight+"");
                 Log.i(TAG+" moveY-mLastY", moveY-mLastY+"");
-                layoutParams.height=((int) ( mHeaderContainerHeight+(moveY-mLastY)/2)>0)? (int) (mHeaderContainerHeight+(moveY-mLastY)/2):0;
-                if(layoutParams.height<=0){
-                   removeHeaderView(mHeaderContainer);
-                }else{
-                   /* if(getHeaderViewsCount()<=0)
-                    addHeaderView(mHeaderContainer);*/
-                }
+                layoutParams.height=((int) (mHeaderContainerHeight+(moveY-mLastY)/2));
                 Log.i(TAG+"after", layoutParams.height+"");
                 mHeaderContainer.setLayoutParams(layoutParams);
                 break;
@@ -101,6 +101,6 @@ public class PullToZoomListViewDemo extends ListView {
                 mHeaderContainer.setLayoutParams(layoutParams2);
                 break;
         }
-        return true;
+        return super.onTouchEvent(ev);
     }
 }
