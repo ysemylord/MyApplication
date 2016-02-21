@@ -3,9 +3,13 @@ package com.example.sijia.myapplication.util;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -144,4 +148,30 @@ public class Util {
         DecimalFormat decimalFormat=new DecimalFormat(".00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
         String p=decimalFormat.format(price);//format 返回的是字符串
     }
+
+    public static void webViewNormalSetting(WebView webview_present,String cachePath){
+        webview_present.getSettings().setJavaScriptEnabled(true);
+        webview_present.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webview_present.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);  //设置 缓存模式
+        // 开启 DOM storage API 功能
+        webview_present.getSettings().setDomStorageEnabled(true);
+        //开启 database storage API 功能
+        webview_present.getSettings().setDatabaseEnabled(true);
+        String cacheDirPath = Environment.getDownloadCacheDirectory() + cachePath;
+        webview_present.getSettings().setDatabasePath(cacheDirPath);
+        //设置  Application Caches 缓存目录
+        webview_present.getSettings().setAppCachePath(cacheDirPath);
+        //开启 Application Caches 功能
+        webview_present.getSettings().setAppCacheEnabled(true);
+        webview_present.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // TODO Auto-generated method stub
+                //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
+                view.loadUrl(url);
+                return true;
+            }
+        });
+    }
+
 }

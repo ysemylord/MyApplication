@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sijia.myapplication.ScrollLisenerActivity">
+
+    <com.example.sijia.myapplication.FormatWidget.ObservableScrollView
+        android:id="@+id/observableScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:orientation="vertical"
+          android:layout_height="match_parent">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="800dp"
+              android:background="@android:color/black"
+              ></LinearLayout>
+          <RelativeLayout
+              android:id="@+id/title_container"
+              android:layout_width="match_parent"
+              android:layout_height="80dp"
+
+              android:layout_alignParentTop="true">
+
+              <RelativeLayout
+                  android:id="@+id/search_container"
+                  android:layout_width="200dp"
+                  android:layout_height="30dp"
+                  android:layout_centerInParent="true"
+                  android:focusable="true"
+                  android:focusableInTouchMode="true">
+
+
+              </RelativeLayout>
+
+              <RelativeLayout
+                  android:layout_width="30dp"
+                  android:layout_height="40dp"
+                  android:layout_centerVertical="true"
+                  android:layout_marginRight="20dp"
+                  android:layout_toLeftOf="@+id/search_container">
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentRight="true"
+                      android:layout_alignParentTop="true"
+                      android:background="@drawable/shape_round_red_solid"
+                      android:gravity="center"
+                      android:text="6"
+                      android:textColor="#ffffff"
+                      android:textSize="10sp" />
+
+              </RelativeLayout>
+
+              <View
+                  android:id="@+id/title_line"
+                  android:layout_width="match_parent"
+                  android:layout_height="0.1dp"
+                  android:layout_alignParentBottom="true"
+                  android:background="#afcccccc"
+                  android:visibility="gone"></View>
+
+          </RelativeLayout>
+      </RelativeLayout>
+
+    </com.example.sijia.myapplication.FormatWidget.ObservableScrollView>
+</RelativeLayout>

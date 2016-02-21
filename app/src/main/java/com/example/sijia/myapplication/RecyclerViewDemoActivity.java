@@ -1,15 +1,17 @@
 package com.example.sijia.myapplication;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sijia.myapplication.adapter.SimpleRecyclerViewAdapter2;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ import butterknife.ButterKnife;
 public class RecyclerViewDemoActivity extends AppCompatActivity {
 
     @Bind(R.id.recycler_view)
-    RecyclerView recyclerRecyclerView;
+    XRecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +31,11 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //创建默认的线性LayoutManager
        // LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        //recyclerRecyclerView.setLayoutManager(mLayoutManager);
-       // recyclerRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        recyclerRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
+        //mRecyclerView.setLayoutManager(mLayoutManager);
+       // mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
        //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
-        recyclerRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(true);
 
         final List<String> mList = new ArrayList<>();
         for(int i=0;i<100;i++){
@@ -46,7 +48,7 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
                 textView.setText(mList.get(position));
             }
         };
-          recyclerRecyclerView.setAdapter(myRecyclerViewAdapter);*/
+          mRecyclerView.setAdapter(myRecyclerViewAdapter);*/
         SimpleRecyclerViewAdapter2 myRecyclerViewAdapter2 = new SimpleRecyclerViewAdapter2<String>(this,mList,R.layout.recycler_item){
             @Override
             public void onBindViewHolder(SimpleViewHolder holder, int position) {
@@ -59,9 +61,36 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         myRecyclerViewAdapter2.setOnRecyclerViewItemClickListener(new SimpleRecyclerViewAdapter2.OnRecyclerViewItemClickListener<String>() {
             @Override
             public void onItemClick(View view, String data) {
-                Toast.makeText(RecyclerViewDemoActivity.this,data,Toast.LENGTH_SHORT).show();
+                Toast.makeText(RecyclerViewDemoActivity.this, data, Toast.LENGTH_SHORT).show();
             }
         });
-        recyclerRecyclerView.setAdapter(myRecyclerViewAdapter2);
+        mRecyclerView.setAdapter(myRecyclerViewAdapter2);
+
+
+
+        mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
+        mRecyclerView.setArrowImageView(R.mipmap.iconfont_downgrey);
+        mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRecyclerView.refreshComplete();
+                    }
+                }, 2 * 1000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRecyclerView.loadMoreComplete();
+                    }
+                }, 2 * 1000);
+            }
+        });
     }
 }
