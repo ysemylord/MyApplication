@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
         ll.height=ll.height+20;
         tv.setLayoutParams(ll);
         tv.requestLayout();
+
     }
 
     public void smaller(View view) {
