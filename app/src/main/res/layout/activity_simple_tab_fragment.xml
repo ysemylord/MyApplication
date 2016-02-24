@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:background="@drawable/tab_title_bg"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="@color/tab_tadio_color"
+            android:padding="5dp"
+            android:textSize="12sp"
+            android:button="@null"
+            android:background="@drawable/tab_title_left"
+            android:text="图文详情"
+            />
+        <RadioButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="12sp"
+            android:padding="5dp"
+            android:textColor="@color/tab_tadio_color"
+            android:button="@null"
+            android:background="@drawable/tab_title_center"
+            android:text="商品认证"
+            />
+        <RadioButton
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="12sp"
+            android:textColor="@color/tab_tadio_color"
+            android:background="@drawable/tab_title_right"
+            android:button="@null"
+            android:text="商品评价"
+            />
+    </RadioGroup>
+</LinearLayout>
