@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sijia.myapplication.adapter.SimpleRecyclerViewAdapter2;
+import com.example.sijia.myapplication.FormatAdapter.SimpleRecyclerViewAdapter2;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
