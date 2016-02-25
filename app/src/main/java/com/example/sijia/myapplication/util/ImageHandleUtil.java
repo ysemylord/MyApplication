@@ -31,7 +31,7 @@ public class ImageHandleUtil  {
          hueColorMatrix.setRotate(1,hue);
          hueColorMatrix.setRotate(2, hue);
 
-         //设置饱和度
+         //设置饱和度 0f-1f
          ColorMatrix saturationColorMatrix=new ColorMatrix();
          saturationColorMatrix.setSaturation(saturation);
 
@@ -47,7 +47,7 @@ public class ImageHandleUtil  {
 
 
          paint.setColorFilter(new ColorMatrixColorFilter(finalColorMatrix));
-         canvase.drawBitmap(originalBitmap, 0, 0, paint);//将origianlBitmap画在needBitmap上
+         canvase.drawBitmap(originalBitmap, 0, 0, paint);//将origianlBitmap画在needBitmap上,
 
          return neededBitmap;
      }

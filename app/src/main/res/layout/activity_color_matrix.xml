@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    tools:context="com.example.sijia.myapplication.ColorMatrixActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+    <ImageView
+        android:background="@drawable/ic_loading_rotate"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/imageView"
+
+        android:layout_marginTop="70dp"
+       />
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar1"
+        android:layout_gravity="bottom"
+        android:max="255"
+        android:progress="127"
+       />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar2"
+        android:layout_gravity="bottom"
+        android:max="255"
+        android:progress="127"
+        />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar3"
+        android:layout_gravity="bottom"
+        android:max="255"
+        android:progress="127"
+        />
+</LinearLayout>
