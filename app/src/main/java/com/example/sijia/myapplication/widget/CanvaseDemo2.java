@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -15,9 +17,9 @@ import java.util.Date;
  */
 public class CanvaseDemo2 extends View {
     private final int lineWidth = 30;
-    private int mSecondPointerAngle = 0;
-    private int mMunitePonterAngle = 0;
-    private int mHourPointerAngle=0;
+    private float mSecondPointerAngle = 0;
+    private float mMunitePonterAngle = 0;
+    private float mHourPointerAngle=0;
 
     public CanvaseDemo2(Context context) {
         super(context);
@@ -64,7 +66,7 @@ public class CanvaseDemo2 extends View {
         canvas.save();
         canvas.translate(getWidth() / 2, getHeight() / 2);
 
-        calcuAngle();
+        calcuAngle2();
 
         //秒
         canvas.save();
@@ -92,9 +94,12 @@ public class CanvaseDemo2 extends View {
 
     private void calcuAngle() {
         Date date=new Date();
-        int seconde=date.getSeconds();
-        int munite=date.getMinutes();
-        int hour=date.getHours();
+        float seconde=date.getSeconds();
+        float munite=date.getMinutes()+seconde/60;
+        float hour=date.getHours()+munite/60;
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String time=sdf.format(date);
+
         Log.i("time",hour+":"+munite+":"+seconde);
        /* int secAng=seconde/60*360;
         int munAng=munite/60*360;
@@ -103,8 +108,23 @@ public class CanvaseDemo2 extends View {
         mMunitePonterAngle=munite*6;
         mHourPointerAngle=hour*30;
         Log.i("angle",mSecondPointerAngle+" "+mMunitePonterAngle+" "+mHourPointerAngle);
-
     }
+    private void calcuAngle2() {
+        Calendar calendar=Calendar.getInstance();
+        float milli=calendar.get(Calendar.MILLISECOND);
+        float seconde=calendar.get(Calendar.SECOND)+milli/1000;
+        float munite=calendar.get(Calendar.MINUTE)+seconde/60;
+        float hour=calendar.get(Calendar.HOUR)+munite/60;
 
+
+        Log.i("time",hour+":"+munite+":"+seconde);
+       /* int secAng=seconde/60*360;
+        int munAng=munite/60*360;
+        int houAng=hour/24*360;*/
+        mSecondPointerAngle=seconde*6;
+        mMunitePonterAngle=munite*6;
+        mHourPointerAngle=hour*30;
+        Log.i("angle",mSecondPointerAngle+" "+mMunitePonterAngle+" "+mHourPointerAngle);
+    }
 
 }

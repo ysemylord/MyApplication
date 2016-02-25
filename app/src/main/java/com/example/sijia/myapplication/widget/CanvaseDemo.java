@@ -39,6 +39,7 @@ public class CanvaseDemo extends View {
         int startY = getHeight() / 2 - getWidth() / 2;
         paint.setTextSize(16);
         canvas.save();
+
         for (int i = 0; i < 12; i++) {
             canvas.drawLine(getWidth() / 2, getHeight() / 2 - getWidth() / 2, startX, startY + lineWidth, paint);
             canvas.drawText(i + "", startX - paint.measureText(i + "") / 2, startY + lineWidth + 30, paint);
