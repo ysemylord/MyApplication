@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
+import com.example.sijia.myapplication.R;
+
 import java.util.List;
 
 /**
@@ -27,11 +29,10 @@ public class FormatFragmentTabAdapter implements CompoundButton.OnCheckedChangeL
     private OnRgsExtraCheckedChangedListener onRgsExtraCheckedChangedListener; // 用于让调用者在切换tab时候增加新的功能
 
     /**
-     *
      * @param fragmentActivity
-     * @param fragments 展示的faragment
+     * @param fragments         展示的faragment
      * @param fragmentContentId fragment的容器
-     * @param radiobuttons  展示tab的radiobutton
+     * @param radiobuttons      展示tab的radiobutton
      * @note fragment与radiobuttons的顺序必须对应
      */
     public FormatFragmentTabAdapter(FragmentActivity fragmentActivity, List<Fragment> fragments, int fragmentContentId, List<RadioButton> radiobuttons) {
@@ -57,46 +58,46 @@ public class FormatFragmentTabAdapter implements CompoundButton.OnCheckedChangeL
     }
 
     /**
-     *当在切换RadioButton时，该方法会被调用两次
+     * 当在切换RadioButton时，该方法会被调用两次
      * 一次是未被选中的变为选中的 此时isChecked为false
      * 另一次是选中的变为不选中的 此时isChecked为true
+     *
      * @param buttonView
      * @param isChecked
      */
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (!isChecked) {
-            Log.d("uncheck",isChecked+"");
+            Log.d("uncheck", isChecked + "");
             return;
         }
-        Log.d("check",isChecked+"");
-         RadioButton checkedRadioButton= (RadioButton) buttonView;
-         for(int i=0;i<radiobuttons.size();i++){
-             RadioButton radioButton1=radiobuttons.get(i);
-             if(radioButton1.getId()==checkedRadioButton.getId()){
-                 Fragment fragment = fragments.get(i);
-                 FragmentTransaction ft = obtainFragmentTransaction(i);
+        Log.d("check", isChecked + "");
+        RadioButton checkedRadioButton = (RadioButton) buttonView;
+        for (int i = 0; i < radiobuttons.size(); i++) {
+            RadioButton radioButton1 = radiobuttons.get(i);
+            if (radioButton1.getId() == checkedRadioButton.getId()) {
+                Fragment fragment = fragments.get(i);
+                FragmentTransaction ft = obtainFragmentTransaction(i);
 
-                 getCurrentFragment().onPause(); // 暂停当前tab
+                getCurrentFragment().onPause(); // 暂停当前tab
 //                getCurrentFragment().onStop(); // 暂停当前tab
 
-                 if (fragment.isAdded()) {
+                if (fragment.isAdded()) {
 //                    fragment.onStart(); // 启动目标tab的onStart()
-                     fragment.onResume(); // 启动目标tab的onResume()
-                 } else {
-                     ft.add(fragmentContentId, fragment);
-                 }
-                 showTab(i); // 显示目标tab
-                 ft.commit();
+                    fragment.onResume(); // 启动目标tab的onResume()
+                } else {
+                    ft.add(fragmentContentId, fragment);
+                }
+                showTab(i); // 显示目标tab
+                ft.commit();
 
-                 // 如果设置了切换tab额外功能功能接口
-                 if (null != onRgsExtraCheckedChangedListener) {
-                     onRgsExtraCheckedChangedListener.OnRgsExtraCheckedChanged(radioButton1, i);
-                 }
-             }
-         }
+                // 如果设置了切换tab额外功能功能接口
+                if (null != onRgsExtraCheckedChangedListener) {
+                    onRgsExtraCheckedChangedListener.OnRgsExtraCheckedChanged(radioButton1, i);
+                }
+            }
+        }
     }
-
 
 
     /**
@@ -127,12 +128,12 @@ public class FormatFragmentTabAdapter implements CompoundButton.OnCheckedChangeL
      */
     private FragmentTransaction obtainFragmentTransaction(int index) {
         FragmentTransaction ft = fragmentActivity.getSupportFragmentManager().beginTransaction();
-  /*      // 设置切换动画
-        if(index > currentTab){
-            ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out);
-        }else{
-            ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_right_out);
-        }*/
+        // 设置切换动画
+        if (index > currentTab) {
+            ft.setCustomAnimations(R.anim.slide_right_to_middle, R.anim.slide_middle_to_left);
+        } else {
+            ft.setCustomAnimations(R.anim.slide_left_to_middle, R.anim.slide_middle_to_right);
+        }
         return ft;
     }
 

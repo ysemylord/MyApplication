@@ -60,7 +60,6 @@
 
         <activity android:name=".PullToRefreshDemoActivity" />
         <activity android:name=".PullToRefreshDividePageDemoActivity" >
-
         </activity>
         <activity android:name=".FlowRadioButtonActivity" />
         <activity android:name=".RecyclerViewDemoActivity" >
@@ -77,11 +76,21 @@
         <activity
             android:name=".SimpleTabFragmentActivity"
             android:label="@string/title_activity_simple_tab_fragment" >
+
+        </activity>
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ContainerActivity"
+            android:label="@string/title_activity_container" >
+
         </activity>
     </application>
 
