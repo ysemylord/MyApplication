@@ -10,7 +10,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.sijia.myapplication.adapter.TestSimpleListViewBaseAdapter;
+import com.example.sijia.myapplication.FormatAdapter.TestSimpleListViewBaseAdapter;
 import com.example.sijia.myapplication.model.Product;
 import com.example.sijia.myapplication.util.VolleyQuenueInstence;
 import com.google.gson.Gson;

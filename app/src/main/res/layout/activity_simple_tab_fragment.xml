@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radiogroup"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/tab_title_bg"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_one"
+            style="@style/myTabRadioStyle"
+            android:background="@drawable/tab_title_left"
+            android:text="图文详情"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_two"
+            style="@style/myTabRadioStyle"
+            android:background="@drawable/tab_title_center"
+            android:text="商品认证" />
+
+        <RadioButton
+            android:id="@+id/rb_three"
+            style="@style/myTabRadioStyle"
+            android:background="@drawable/tab_title_right"
+            android:text="商品评价"
+            android:textSize="12sp" />
+    </RadioGroup>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_frame"
+        >
+
+    </FrameLayout>
+</LinearLayout>

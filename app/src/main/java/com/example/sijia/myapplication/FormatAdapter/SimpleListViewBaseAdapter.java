@@ -1,4 +1,4 @@
-package com.example.sijia.myapplication.adapter;
+package com.example.sijia.myapplication.FormatAdapter;
 
 import android.content.Context;
 import android.util.SparseArray;
@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

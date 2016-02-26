@@ -1,4 +1,4 @@
-package com.example.sijia.myapplication.adapter;
+package com.example.sijia.myapplication.FormatAdapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
