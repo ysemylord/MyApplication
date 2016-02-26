@@ -1,19 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sijia.myapplication.fragment.RatingBarFragment">
+    android:orientation="vertical"
+    tools:context="com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment">
 
     <!-- TODO: Update blank fragment layout -->
-<!--   <RatingBar
+    <!--numStars 总数，rating 当前选中星星数,stopSize 步长即
+    isIndicator 不可点击，不可滑动
+    -->
+   <RatingBar
+       android:layout_marginLeft="40dp"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:numStars="6"
-
        android:progressDrawable="@drawable/rating_bar_custom"
-       />-->
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="6"
-        />
-</FrameLayout>
+       android:id="@+id/rating_bar"
+       android:numStars="6"
+       android:rating="1"
+       android:stepSize="0.5"
+       />
+
+
+
+</LinearLayout>

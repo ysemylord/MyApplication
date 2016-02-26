@@ -10,6 +10,6 @@
         android:id="@android:id/secondaryProgress"
         android:drawable="@drawable/ratingbar_bg" />
     <item
-        android:id="@android:id/background"
+        android:id="@android:id/progress"
         android:drawable="@drawable/ratingbar_star" />
 </layer-list>

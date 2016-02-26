@@ -10,7 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sijia.myapplication.FormatAdapter.SimpleListViewBaseAdapter;
-import com.example.sijia.myapplication.fragment.RatingBarFragment;
+import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
+import com.example.sijia.myapplication.fragment.WidgetUse.SeekBarFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Main2Activity extends AppCompatActivity {
         ButterKnife.bind(this);
         mNames=new ArrayList<>();
         mNames.add("RatingBar");
+        mNames.add("SeekBar");
         ShowFragnemtnAdapter showFragnemtnAdapter=new ShowFragnemtnAdapter(this,mNames);
         mFragmentListView.setAdapter(showFragnemtnAdapter);
         mFragmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -40,6 +42,8 @@ public class Main2Activity extends AppCompatActivity {
 
                 if(position==0){
                     intent.putExtra("Fragment", new RatingBarFragment());
+                }else if(position==1){
+                    intent.putExtra("Fragment", new SeekBarFragment());
                 }
 
                 startActivity(intent);
