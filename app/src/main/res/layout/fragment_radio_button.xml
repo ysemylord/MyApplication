@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment">
+   <RadioGroup
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       >
+       <RadioButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="1"
+           />
+
+       <RadioButton
+           style="@style/mysortRadioStyle"
+           android:text="默认排序"
+           />
+       <RadioButton
+           style="@style/mysortRadioStyle"
+           android:text="按最后活跃时间活跃度"
+           />
+       <RadioButton
+           style="@style/mysortRadioStyle"
+           android:text="按成员等级"
+           />
+   </RadioGroup>
+
+</RelativeLayout>

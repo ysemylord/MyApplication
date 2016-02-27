@@ -39,4 +39,5 @@ dependencies {
     compile 'com.github.orhanobut:logger:1.12'
     compile 'com.jcodecraeer:xrecyclerview:1.2.6'
     compile files('src/main/libs/butterknife-7.0.1.jar')
+    compile 'com.android.support:support-v4:21.0.3'
 }
