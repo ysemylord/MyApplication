@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sijia.myapplication.FormatAdapter.SimpleListViewBaseAdapter;
+import com.example.sijia.myapplication.fragment.CustomWidget.SurfaceViewFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.SeekBarFragment;
@@ -35,6 +36,7 @@ public class Main2Activity extends AppCompatActivity {
         mNames.add("RatingBar");
         mNames.add("SeekBar");
         mNames.add("RadioButton");
+        mNames.add("SurfaceView");
         ShowFragnemtnAdapter showFragnemtnAdapter=new ShowFragnemtnAdapter(this,mNames);
         mFragmentListView.setAdapter(showFragnemtnAdapter);
         mFragmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,6 +50,8 @@ public class Main2Activity extends AppCompatActivity {
                     intent.putExtra("Fragment", new SeekBarFragment());
                 }else if(position==2){
                     intent.putExtra("Fragment", new RadioButtonFragment());
+                }else if(position==3){
+                    intent.putExtra("Fragment", new SurfaceViewFragment());
                 }
 
                 startActivity(intent);
