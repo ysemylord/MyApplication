@@ -1,6 +1,7 @@
 package com.example.sijia.myapplication;
 
 import android.app.Application;
+import android.os.Build;
 import android.test.ApplicationTestCase;
 import android.util.Log;
 
@@ -10,9 +11,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.sijia.myapplication.util.VolleyQuenueInstence;
 import com.orhanobut.logger.Logger;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 /**
@@ -24,12 +22,20 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
     public void test(){
 
-         float i=5f/2;
+        int currentapiVersion=android.os.Build.VERSION.SDK_INT;
+        if(currentapiVersion>= Build.VERSION_CODES.JELLY_BEAN){
+              Log.i("mes",">=");
+
+        }else{
+            Log.i("mes","=<");
+        }
+
+      /*   float i=5f/2;
         Log.i("value",i+"");
 
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
         String time=sdf.format(new Date());
-        Log.i("time",time);
+        Log.i("time",time);*/
     /*    String path=Environment.getDownloadCacheDirectory().getAbsolutePath();
         Log.i("path", path);
 

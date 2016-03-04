@@ -15,4 +15,5 @@ public class BaseFragment extends Fragment implements Serializable{
         super.onCreate(savedInstanceState);
         Log.i("FragmentStart",getClass().getSimpleName());
     }
+
 }

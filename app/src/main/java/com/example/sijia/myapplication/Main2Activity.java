@@ -14,6 +14,7 @@ import com.example.sijia.myapplication.fragment.CustomWidget.SurfaceViewFragment
 import com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.SeekBarFragment;
+import com.example.sijia.myapplication.fragment.WidgetUse.WebViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,7 @@ public class Main2Activity extends AppCompatActivity {
         mNames.add("SeekBar");
         mNames.add("RadioButton");
         mNames.add("SurfaceView");
+        mNames.add("WebView");
         ShowFragnemtnAdapter showFragnemtnAdapter=new ShowFragnemtnAdapter(this,mNames);
         mFragmentListView.setAdapter(showFragnemtnAdapter);
         mFragmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,6 +54,8 @@ public class Main2Activity extends AppCompatActivity {
                     intent.putExtra("Fragment", new RadioButtonFragment());
                 }else if(position==3){
                     intent.putExtra("Fragment", new SurfaceViewFragment());
+                }else if(position==4){
+                    intent.putExtra("Fragment", new WebViewFragment());
                 }
 
                 startActivity(intent);
