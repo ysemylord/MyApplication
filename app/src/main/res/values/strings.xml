@@ -10,4 +10,8 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_container">ContainerActivity</string>
     <string name="title_activity_html_source">HtmlSource</string>
+    <string name="title_activity_broadcast_receiver_demo">BroadcastReceiverDemoActivity</string>
+    <string name="skip">跳转</string>
+    <string name="title_activity_send_broad_cast">SendBroadCastActivity</string>
+    <string name="send">发送广播</string>
 </resources>

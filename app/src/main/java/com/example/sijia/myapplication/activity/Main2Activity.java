@@ -1,4 +1,4 @@
-package com.example.sijia.myapplication;
+package com.example.sijia.myapplication.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.sijia.myapplication.ContainerActivity;
 import com.example.sijia.myapplication.FormatAdapter.SimpleListViewBaseAdapter;
+import com.example.sijia.myapplication.R;
 import com.example.sijia.myapplication.fragment.CustomWidget.SurfaceViewFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
