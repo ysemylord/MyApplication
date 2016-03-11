@@ -81,11 +81,11 @@
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2" >
- <!--           <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity
             android:name=".ContainerActivity"
@@ -95,22 +95,20 @@
             android:name=".MyTest"
             android:label="@string/title_activity_main2" >
 
-            <!--
-                <intent-filter>
+   <!--             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".HtmlSource"
             android:label="@string/title_activity_html_source" >
-            <intent-filter>
+   <!--         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
     </application>
 

@@ -2,11 +2,13 @@ package com.example.sijia.myapplication.fragment.WidgetUse;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -47,13 +49,12 @@ public class WebViewFragment extends BaseFragment {
 
         mMywebview.getSettings().setJavaScriptEnabled(true);
 
-        mMywebview.addJavascriptInterface(this, "myWebView");
+        //注入javascript对象
+        mMywebview.addJavascriptInterface(new JavaScriptObject(), "myWebView");
 
 
     }
-    public void showSource(String html) {
-        Log.d("HTML", html);
-    }
+
 
     @Override
     public void onDestroyView() {
@@ -74,9 +75,15 @@ public class WebViewFragment extends BaseFragment {
             Log.i("MyWebViewClient", "onPageFinished");
             //页面加载完成后，执行以下javascript
             //mMywebview.loadUrl("javascript:window.myWebView.showSource(document.getElementById('kjk-layout-header').style.display='none');");
-              mMywebview.loadUrl("javascript:window.myWebView.showSource(document.getElementsByTagName('html')[0].innerHTML)");
+            //  mMywebview.loadUrl("javascript:window.myWebView.showSource(document.getElementsByTagName('html')[0].innerHTML)");
            // mMywebview.loadUrl("document.getElementsByTagName('html')[0].innerHTML");
             //document.getElementsByTagName('html')[0].innerHTML
+            if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.JELLY_BEAN_MR1){
+                                                                          //调用js后，结果会在showSourceJ中回调
+                mMywebview.loadUrl("javascript:window.myWebView.showSourceJ(document.getElementsByTagName('html')[0].innerHTML)");
+            }else{                                                         //调用js后，结果会在showSourceJ中回调
+                mMywebview.loadUrl("javascript:window.myWebView.showSource(document.getElementsByTagName('html')[0].innerHTML)");
+            }
         }
 
 
@@ -86,6 +93,27 @@ public class WebViewFragment extends BaseFragment {
             Log.i("url", url);
             return false;
         }
+    }
+
+    class JavaScriptObject{
+
+        /**
+         * api<17
+         * @param result
+         */
+        public void showSource(String result){
+            Log.i("js_result",result);
+        }
+
+        /**
+         * api>=17
+         * @param result
+         */
+        @JavascriptInterface
+        public void showSourceJ(String result){
+            Log.i("js_result",result);
+        }
+
     }
 
 
