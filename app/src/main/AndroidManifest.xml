@@ -81,11 +81,11 @@
         <activity
             android:name=".activity.Main2Activity"
             android:label="@string/title_activity_main2" >
-<!--            <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity
             android:name=".ContainerActivity"
@@ -118,11 +118,11 @@
         <activity
             android:name=".activity.ForBroadCastReceiver.BroadcastReceiverDemoActivity"
             android:label="@string/title_activity_broadcast_receiver_demo" >
-            <intent-filter>
+     <!--       <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".activity.ForBroadCastReceiver.SendBroadCastActivity"

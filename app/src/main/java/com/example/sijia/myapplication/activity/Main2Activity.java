@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.sijia.myapplication.ContainerActivity;
 import com.example.sijia.myapplication.FormatAdapter.SimpleListViewBaseAdapter;
 import com.example.sijia.myapplication.R;
+import com.example.sijia.myapplication.fragment.CustomWidget.RoundImageFragment;
 import com.example.sijia.myapplication.fragment.CustomWidget.SurfaceViewFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
@@ -41,6 +42,7 @@ public class Main2Activity extends AppCompatActivity {
         mNames.add("RadioButton");
         mNames.add("SurfaceView");
         mNames.add("WebView");
+        mNames.add("RoudImage");
         ShowFragnemtnAdapter showFragnemtnAdapter=new ShowFragnemtnAdapter(this,mNames);
         mFragmentListView.setAdapter(showFragnemtnAdapter);
         mFragmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,6 +60,8 @@ public class Main2Activity extends AppCompatActivity {
                     intent.putExtra("Fragment", new SurfaceViewFragment());
                 }else if(position==4){
                     intent.putExtra("Fragment", new WebViewFragment());
+                }else if(position==5){
+                    intent.putExtra("Fragment", new RoundImageFragment());
                 }
 
                 startActivity(intent);

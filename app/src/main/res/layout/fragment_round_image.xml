@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+  <!--  <com.example.sijia.myapplication.widget.Rou&lt;!&ndash;&ndash;&gt;ndImage
+        android:layout_width="80dp"
+        android:layout_height="80dp"></com.example.sijia.myapplication.widget.RoundImage>-->
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/test_img"
+        android:scaleType="fitXY"
+        />
+    <com.example.sijia.myapplication.widget.guaguale
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></com.example.sijia.myapplication.widget.guaguale>
+
+</LinearLayout>
