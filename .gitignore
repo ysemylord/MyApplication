@@ -39,3 +39,4 @@ proguard/
 *.log 
 .idea/
 misc.xml
+test
