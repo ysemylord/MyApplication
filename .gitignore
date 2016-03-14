@@ -36,4 +36,5 @@ proguard/
   
 # Log Files  
 *.log 
-
+.idea/
+misc.xml
