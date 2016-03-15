@@ -2,6 +2,7 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+/.idea/libraries
 .DS_Store
 /build
 /captures
@@ -36,4 +37,7 @@ proguard/
   
 # Log Files  
 *.log 
+.idea/
+misc.xml
+test1.txt
 
