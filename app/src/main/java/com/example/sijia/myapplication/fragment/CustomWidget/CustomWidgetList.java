@@ -7,7 +7,7 @@ import com.example.sijia.myapplication.fragment.MyListFragment;
 /**
  * Created by xuyaf on 2016/3/15.
  */
-public class CustomWidget extends MyListFragment{
+public class CustomWidgetList extends MyListFragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

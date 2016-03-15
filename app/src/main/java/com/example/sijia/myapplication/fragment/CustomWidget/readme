@@ -1,0 +1,3 @@
+如果需要新田一项
+只需要新建一个DialogFragment（见TranferMatrixDialog）
+再在CustomWidgetList添加即可

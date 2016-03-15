@@ -12,9 +12,7 @@ import android.widget.TextView;
 import com.example.sijia.myapplication.ContainerActivity;
 import com.example.sijia.myapplication.FormatAdapter.SimpleListViewBaseAdapter;
 import com.example.sijia.myapplication.R;
-import com.example.sijia.myapplication.fragment.CustomWidget.CustomWidget;
-import com.example.sijia.myapplication.fragment.CustomWidget.RoundImageFragment;
-import com.example.sijia.myapplication.fragment.CustomWidget.SurfaceViewFragment;
+import com.example.sijia.myapplication.fragment.CustomWidget.CustomWidgetList;
 import com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.SeekBarFragment;
@@ -42,7 +40,7 @@ public class Main2Activity extends AppCompatActivity {
         mNames.add("SeekBar");
         mNames.add("RadioButton");
         mNames.add("WebView");
-        mNames.add("CustomWidget 自定义控件");
+        mNames.add("CustomWidgetList 自定义控件");
         ShowFragnemtnAdapter showFragnemtnAdapter=new ShowFragnemtnAdapter(this,mNames);
         mFragmentListView.setAdapter(showFragnemtnAdapter);
         mFragmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,7 +57,7 @@ public class Main2Activity extends AppCompatActivity {
                 }else if(position==3){
                     intent.putExtra("Fragment", new WebViewFragment());
                 }else if(position==4){
-                    intent.putExtra("Fragment", new CustomWidget());
+                    intent.putExtra("Fragment", new CustomWidgetList());
                 }
 
                 startActivity(intent);
