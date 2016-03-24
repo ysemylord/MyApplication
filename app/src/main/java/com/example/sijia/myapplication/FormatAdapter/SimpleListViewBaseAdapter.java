@@ -104,6 +104,7 @@ public abstract class SimpleListViewBaseAdapter<T> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+
     public void replaceAll(List<T> elem) {
         data.clear();
         data.addAll(elem);

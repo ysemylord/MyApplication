@@ -1,5 +1,6 @@
 package com.example.sijia.myapplication.fragment.CustomWidget;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
@@ -27,6 +28,7 @@ public class CartViewDialogFragment extends BaseDialogFragment {
             public void onClick(View v) {
                 CartAnimationView cartAnimationView= (CartAnimationView) getView().findViewById(R.id.imageView);
                 cartAnimationView.setView(getView().findViewById(R.id.to_view));
+                cartAnimationView.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.teset));
                 cartAnimationView.startAnimation();
                 cartAnimationView.setAnimationListener(new CartAnimationView.AnimationListener(){
 

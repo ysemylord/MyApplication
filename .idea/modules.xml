@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Assistlibrary/Assistlibrary.iml" filepath="$PROJECT_DIR$/Assistlibrary/Assistlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TabHost/TabHost.iml" filepath="$PROJECT_DIR$/TabHost/TabHost.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WechatTab/WechatTab.iml" filepath="$PROJECT_DIR$/WechatTab/WechatTab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cameramine/cameramine.iml" filepath="$PROJECT_DIR$/cameramine/cameramine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wifiConnecter/wifiConnecter.iml" filepath="$PROJECT_DIR$/wifiConnecter/wifiConnecter.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,6 +1,13 @@
 package com.personal.assistlibrary.customwidget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
@@ -121,7 +128,41 @@ public class CartAnimationView extends ImageView {
         mAnimation.addAnimation(animainSetOne);
         mAnimation.addAnimation(animainSetTow);
 
+    }
+
+
+    public void setBitmap(Bitmap bitmap){
+
+        Bitmap needBitmap=Bitmap.createBitmap(getWidth(),getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas=new Canvas(needBitmap);
+
+        BitmapShader bitmapShader=new BitmapShader(small(bitmap,getWidth()*1f/bitmap.getWidth(),getHeight()*1f/bitmap.getHeight()), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        //画图
+        Paint bitmapPaint=new Paint();
+        bitmapPaint.setAntiAlias(true);
+        bitmapPaint.setShader(bitmapShader);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, bitmapPaint);
+
+        //画边角的圆
+        Paint strokPaint=new Paint();
+        strokPaint.setStrokeCap(Paint.Cap.ROUND);
+        strokPaint.setStrokeJoin(Paint.Join.ROUND);
+        strokPaint.setAntiAlias(true);
+        strokPaint.setStrokeWidth(1);
+        strokPaint.setStyle(Paint.Style.STROKE);
+        strokPaint.setColor(Color.BLUE);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, strokPaint);
+
+
+        setImageBitmap(needBitmap);
 
     }
 
+    private static Bitmap small(Bitmap bitmap,float scalex,float scaley) {
+        Matrix matrix = new Matrix();
+        matrix.postScale(scalex,scaley); //长和宽放大缩小的比例
+        Bitmap resizeBmp = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+        return resizeBmp;
+    }
 }
