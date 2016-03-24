@@ -1,10 +1,15 @@
 package com.example.sijia.myapplication.activity;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +22,7 @@ import com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.SeekBarFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.WebViewFragment;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +40,7 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        initSystemBar((Activity)Main2Activity.this);
         ButterKnife.bind(this);
         mNames=new ArrayList<>();
         mNames.add("RatingBar");
@@ -64,7 +71,47 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
     }
+    public static void initSystemBar(Activity activity) {
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            setTranslucentStatus(activity, true);
+
+        }
+
+        SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+
+        tintManager.setStatusBarTintEnabled(true);
+
+        // 使用颜色资源
+
+        tintManager.setStatusBarTintResource(R.color.cube_holo_red_dark);
+
+    }
+
+    @TargetApi(19)
+
+    private static void setTranslucentStatus(Activity activity, boolean on) {
+
+        Window win = activity.getWindow();
+
+        WindowManager.LayoutParams winParams = win.getAttributes();
+
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+
+        if (on) {
+
+            winParams.flags |= bits;
+
+        } else {
+
+            winParams.flags &= ~bits;
+
+        }
+
+        win.setAttributes(winParams);
+
+    }
 
 }
 
@@ -85,4 +132,6 @@ class ShowFragnemtnAdapter extends SimpleListViewBaseAdapter<String> {
     public int getResourece() {
         return android.R.layout.simple_list_item_1;
     }
+
+
 }
