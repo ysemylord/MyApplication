@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
@@ -134,10 +135,10 @@ public class CartAnimationView extends ImageView {
     public void setBitmap(Bitmap bitmap){
 
         //最总显示的bitmap
-        Bitmap needBitmap=Bitmap.createBitmap(getWidth(),getHeight(), Bitmap.Config.RGB_565);
+        Bitmap needBitmap=Bitmap.createBitmap(getWidth(),getHeight(), Bitmap.Config.ARGB_4444);
         Canvas canvas=new Canvas(needBitmap);
+        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG));
 
-        //以bitmap构建BitmapShader渲染器
         BitmapShader bitmapShader=new BitmapShader(small(bitmap,getWidth()*1f/bitmap.getWidth(),getHeight()*1f/bitmap.getHeight()), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
         //画图
@@ -146,7 +147,7 @@ public class CartAnimationView extends ImageView {
         bitmapPaint.setShader(bitmapShader);
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, bitmapPaint);
 
-        //画边角的圆
+ /*       //画边角的圆
         Paint strokPaint=new Paint();
         strokPaint.setStrokeCap(Paint.Cap.ROUND);
         strokPaint.setStrokeJoin(Paint.Join.ROUND);
@@ -154,7 +155,7 @@ public class CartAnimationView extends ImageView {
         strokPaint.setStrokeWidth(1);
         strokPaint.setStyle(Paint.Style.STROKE);
         strokPaint.setColor(Color.BLUE);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, strokPaint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, strokPaint);*/
 
 
         setImageBitmap(needBitmap);
