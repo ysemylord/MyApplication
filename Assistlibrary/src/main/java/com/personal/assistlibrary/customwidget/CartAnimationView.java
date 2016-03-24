@@ -133,9 +133,11 @@ public class CartAnimationView extends ImageView {
 
     public void setBitmap(Bitmap bitmap){
 
-        Bitmap needBitmap=Bitmap.createBitmap(getWidth(),getHeight(), Bitmap.Config.ARGB_8888);
+        //最总显示的bitmap
+        Bitmap needBitmap=Bitmap.createBitmap(getWidth(),getHeight(), Bitmap.Config.RGB_565);
         Canvas canvas=new Canvas(needBitmap);
 
+        //以bitmap构建BitmapShader渲染器
         BitmapShader bitmapShader=new BitmapShader(small(bitmap,getWidth()*1f/bitmap.getWidth(),getHeight()*1f/bitmap.getHeight()), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
         //画图
