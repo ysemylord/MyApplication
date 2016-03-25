@@ -4,13 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
@@ -22,6 +23,12 @@ import com.personal.assistlibrary.R;
 /**
  * Created by xyb on 2016/3/24.
  * 商品进入购物车的效果
+ * 使用方式
+ * setView()设置要靠近的View
+ * setBitmap()设置要显示的View
+ * setAnimationListener() 设置动画监听
+ * startAnimation（） 开始动画
+ *
  */
 public class CartAnimationView extends ImageView {
     Context mContext;
@@ -111,10 +118,13 @@ public class CartAnimationView extends ImageView {
         /*TranslateAnimation translateAnimation = new TranslateAnimation(Animation.ABSOLUTE, 0.0f, Animation.RELATIVE_TO_PARENT, 0.75f,
                 Animation.ABSOLUTE, 0.0f, Animation.RELATIVE_TO_PARENT, -1.1f);*/
 
-        //Scale与Translate混合使用的时候，偏移量由相对于自身，变成了相对于父控件（或者是全屏幕吧），很奇怪
+
+        DisplayMetrics metric = new DisplayMetrics();
+        WindowManager ww = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        ww.getDefaultDisplay().getMetrics(metric);
         TranslateAnimation translateAnimation = new TranslateAnimation(
-                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE, mToView.getLeft(),
-                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE, mToView.getTop());
+                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE,(mToView.getLeft()-getLeft())*(1f/0.4f),
+                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE,( mToView.getTop()-getTop()*(1f/0.4f)));
         translateAnimation.setStartOffset(600);
         translateAnimation.setDuration(700);
 
@@ -147,7 +157,7 @@ public class CartAnimationView extends ImageView {
         bitmapPaint.setShader(bitmapShader);
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, bitmapPaint);
 
- /*       //画边角的圆
+  /*      //画边角的圆 锯齿效果很明显
         Paint strokPaint=new Paint();
         strokPaint.setStrokeCap(Paint.Cap.ROUND);
         strokPaint.setStrokeJoin(Paint.Join.ROUND);
@@ -162,7 +172,7 @@ public class CartAnimationView extends ImageView {
 
     }
 
-    private static Bitmap small(Bitmap bitmap,float scalex,float scaley) {
+    private  Bitmap small(Bitmap bitmap,float scalex,float scaley) {
         Matrix matrix = new Matrix();
         matrix.postScale(scalex,scaley); //长和宽放大缩小的比例
         Bitmap resizeBmp = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
