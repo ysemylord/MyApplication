@@ -2,6 +2,7 @@ package com.example.sijia.myapplication.fragment.CustomWidget;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import com.example.sijia.myapplication.R;
@@ -13,7 +14,7 @@ import com.personal.assistlibrary.customwidget.CartAnimationView;
  */
 public class CartViewDialogFragment extends BaseDialogFragment {
 
-
+    Handler mHandler=new Handler();
     @Override
     protected int getResourse() {
         return R.layout.fragment_cartview;
@@ -41,5 +42,37 @@ public class CartViewDialogFragment extends BaseDialogFragment {
             }
         });
 
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        CartAnimationView cartAnimationView= (CartAnimationView) getView().findViewById(R.id.imageView);
+                        cartAnimationView.setView(getView().findViewById(R.id.to_view));
+                        cartAnimationView.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.teset));
+                        cartAnimationView.startAnimation();
+                        cartAnimationView.setAnimationListener(new CartAnimationView.AnimationListener(){
+
+                            @Override
+                            public void onAnimationEnd() {
+
+                            }
+                        });
+                    }
+                },1000);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
