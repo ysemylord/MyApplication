@@ -28,7 +28,6 @@ import com.personal.assistlibrary.R;
  * setBitmap()设置要显示的View
  * setAnimationListener() 设置动画监听
  * startAnimation（） 开始动画
- *
  */
 public class CartAnimationView extends ImageView {
     Context mContext;
@@ -103,6 +102,7 @@ public class CartAnimationView extends ImageView {
 
     /**
      * 初始化动画
+     *
      * @param context
      */
     private void initAniamtion(Context context) {
@@ -123,8 +123,8 @@ public class CartAnimationView extends ImageView {
         WindowManager ww = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         ww.getDefaultDisplay().getMetrics(metric);
         TranslateAnimation translateAnimation = new TranslateAnimation(
-                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE,(mToView.getLeft()-getLeft())*(1f/0.4f),
-                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE,( mToView.getTop()-getTop()*(1f/0.4f)));
+                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE, (mToView.getLeft() - getLeft()) * (1f / 0.4f),
+                Animation.ABSOLUTE, 0.0f, Animation.ABSOLUTE, (mToView.getTop() - getTop() * (1f / 0.4f)));
         translateAnimation.setStartOffset(600);
         translateAnimation.setDuration(700);
 
@@ -141,18 +141,32 @@ public class CartAnimationView extends ImageView {
 
     }
 
+    /**
+     * 通过imageview设置bitmap
+     * @param view
+     */
+    public void setBitmap(View view) {
+        view.setDrawingCacheEnabled(true);
+        Bitmap bitmap = view.getDrawingCache();
+        setBitmap(bitmap);
+        view.setDrawingCacheEnabled(false);
+    }
 
-    public void setBitmap(Bitmap bitmap){
+    /**
+     * 直接设置bitmap
+     * @param bitmap
+     */
+    public void setBitmap(Bitmap bitmap) {
 
         //最总显示的bitmap
-        Bitmap needBitmap=Bitmap.createBitmap(getWidth(),getHeight(), Bitmap.Config.ARGB_4444);
-        Canvas canvas=new Canvas(needBitmap);
-        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG));
+        Bitmap needBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
+        Canvas canvas = new Canvas(needBitmap);
+        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
 
-        BitmapShader bitmapShader=new BitmapShader(small(bitmap,getWidth()*1f/bitmap.getWidth(),getHeight()*1f/bitmap.getHeight()), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        BitmapShader bitmapShader = new BitmapShader(small(bitmap, getWidth() * 1f / bitmap.getWidth(), getHeight() * 1f / bitmap.getHeight()), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
         //画图
-        Paint bitmapPaint=new Paint();
+        Paint bitmapPaint = new Paint();
         bitmapPaint.setAntiAlias(true);
         bitmapPaint.setShader(bitmapShader);
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, bitmapPaint);
@@ -172,10 +186,10 @@ public class CartAnimationView extends ImageView {
 
     }
 
-    private  Bitmap small(Bitmap bitmap,float scalex,float scaley) {
+    private Bitmap small(Bitmap bitmap, float scalex, float scaley) {
         Matrix matrix = new Matrix();
-        matrix.postScale(scalex,scaley); //长和宽放大缩小的比例
-        Bitmap resizeBmp = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+        matrix.postScale(scalex, scaley); //长和宽放大缩小的比例
+        Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
         return resizeBmp;
     }
 }
