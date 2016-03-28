@@ -94,6 +94,7 @@ public class CartAnimationView extends ImageView {
         mAnimationListener = animationListener;
     }
 
+
     public void setView(View view) {
         mToView = view;
         initAniamtion(mContext);
@@ -143,6 +144,7 @@ public class CartAnimationView extends ImageView {
 
     /**
      * 通过imageview设置bitmap
+     *
      * @param view
      */
     public void setBitmap(View view) {
@@ -154,23 +156,25 @@ public class CartAnimationView extends ImageView {
 
     /**
      * 直接设置bitmap
+     *
      * @param bitmap
      */
     public void setBitmap(Bitmap bitmap) {
 
-        //最总显示的bitmap
+        //最终显示的bitmap，当前是空白的bitmap
         Bitmap needBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(needBitmap);
         canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
 
-        BitmapShader bitmapShader = new BitmapShader(small(bitmap, getWidth() * 1f / bitmap.getWidth(), getHeight() * 1f / bitmap.getHeight()), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        Bitmap smallBitamp = small(bitmap, getWidth() * 1f / bitmap.getWidth(), getHeight() * 1f / bitmap.getHeight());
+        BitmapShader bitmapShader = new BitmapShader(smallBitamp, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
         //画图
         Paint bitmapPaint = new Paint();
         bitmapPaint.setAntiAlias(true);
         bitmapPaint.setShader(bitmapShader);
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, bitmapPaint);
-
+        smallBitamp.recycle();
   /*      //画边角的圆 锯齿效果很明显
         Paint strokPaint=new Paint();
         strokPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -183,6 +187,7 @@ public class CartAnimationView extends ImageView {
 
 
         setImageBitmap(needBitmap);
+
 
     }
 
