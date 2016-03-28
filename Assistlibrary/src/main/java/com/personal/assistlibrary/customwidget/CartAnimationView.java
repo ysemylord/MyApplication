@@ -32,7 +32,7 @@ import com.personal.assistlibrary.R;
  */
 //////////////////aaaaaaaaaaaa
     ////////fffff
-//dev a modify aaaa
+//dev a modify aaaa hhhhhhhhh
 public class CartAnimationView extends ImageView {
     Context mContext;
     AnimationListener mAnimationListener;
