@@ -31,6 +31,7 @@ import com.personal.assistlibrary.R;
  * startAnimation（） 开始动画
  */
 //dev b modify bbb
+    //fffffffffddddddddddddddddddbbbbbbbbb
 public class CartAnimationView extends ImageView {
     Context mContext;
     AnimationListener mAnimationListener;
