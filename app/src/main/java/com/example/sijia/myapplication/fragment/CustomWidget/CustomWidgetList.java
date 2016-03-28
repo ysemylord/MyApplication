@@ -15,5 +15,6 @@ public class CustomWidgetList extends MyListFragment{
         addItem((new SurfaceViewFragment()).getClass().getName());
         addItem((new TransferMatrixDialogFragment()).getClass().getName());
         addItem((new CartViewDialogFragment()).getClass().getName());
+        addItem((new MagicTextViewDialogFragment()).getClass().getName());
     }
 }

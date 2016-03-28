@@ -10,6 +10,7 @@ import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -160,19 +161,19 @@ public class CartAnimationView extends ImageView {
      * @param bitmap
      */
     public void setBitmap(Bitmap bitmap) {
-
+        Log.i("bitmapBitmap_size", bitmap.getByteCount() /8f/1024f + "KB");
         //最终显示的bitmap，当前是空白的bitmap
         Bitmap needBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(needBitmap);
-        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
+        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));//抗锯齿
 
         Bitmap smallBitamp = small(bitmap, getWidth() * 1f / bitmap.getWidth(), getHeight() * 1f / bitmap.getHeight());
         BitmapShader bitmapShader = new BitmapShader(smallBitamp, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
-        //画图
         Paint bitmapPaint = new Paint();
         bitmapPaint.setAntiAlias(true);
         bitmapPaint.setShader(bitmapShader);
+
+        //绘制
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, bitmapPaint);
         smallBitamp.recycle();
   /*      //画边角的圆 锯齿效果很明显
@@ -185,7 +186,7 @@ public class CartAnimationView extends ImageView {
         strokPaint.setColor(Color.BLUE);
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, strokPaint);*/
 
-
+        Log.i("needBitmap_size",needBitmap.getByteCount()/8f/1024f+"KB");
         setImageBitmap(needBitmap);
 
 
@@ -195,6 +196,19 @@ public class CartAnimationView extends ImageView {
         Matrix matrix = new Matrix();
         matrix.postScale(scalex, scaley); //长和宽放大缩小的比例
         Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+
+        Log.i("small_size",resizeBmp.getByteCount()/8f/1024f+"kB");
+
         return resizeBmp;
     }
+
+    private Bitmap big(Bitmap bitmap) {
+        Matrix matrix = new Matrix();
+        matrix.preScale(2, 2, 0, 0); //长和宽放大缩小的比例
+        Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        Log.i("big_size",resizeBmp.getByteCount()/1024f+"kB");
+        return resizeBmp;
+    }
+
 }

@@ -1,0 +1,15 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment">
+  <com.personal.assistlibrary.customwidget.MagicTextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="30sp"
+      android:inputType="number"
+      android:text="1000"
+      android:layout_centerInParent="true"
+      android:id="@+id/magic_tv"
+      />
+</RelativeLayout>
