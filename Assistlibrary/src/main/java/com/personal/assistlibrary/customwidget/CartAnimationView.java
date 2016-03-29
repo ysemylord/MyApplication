@@ -44,7 +44,6 @@ public class CartAnimationView extends ImageView {
 
     }
 
-
     public CartAnimationView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
@@ -70,8 +69,6 @@ public class CartAnimationView extends ImageView {
                     mAnimationListener.onAnimationEnd();
                     setVisibility(View.GONE);
                 }
-                mToView.setDrawingCacheEnabled(false);
-
             }
 
             @Override
