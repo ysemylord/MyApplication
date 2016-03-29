@@ -169,6 +169,7 @@ public class CartAnimationView extends ImageView {
 
     }
 
+
     public void setBitmap(Bitmap bitmap) {
 
         //最总显示的bitmap
