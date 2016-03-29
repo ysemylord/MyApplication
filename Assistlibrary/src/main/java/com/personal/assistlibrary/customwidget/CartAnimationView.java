@@ -49,6 +49,7 @@ public class CartAnimationView extends ImageView {
         mContext = context;
     }
 
+
     public CartAnimationView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
