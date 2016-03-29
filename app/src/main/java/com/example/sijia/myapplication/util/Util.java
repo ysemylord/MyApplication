@@ -91,7 +91,7 @@ public class Util {
         int height = metric.heightPixels;  // 屏幕高度（像素）
         float density = metric.density;     // 屏幕密度（   0.75 / 1.0  / 1.5  / 2  /  3  / 3.5 / 4 ）
         int densityDpi = metric.densityDpi; // 屏幕密度DPI（ 120 / 160  / 240 / 320 / 480 / 560 / 640）
-                                            //                           hdpi
+                                            //              ldpi  mdpi   hdpi  xhdpi xxhdpi
         Log.i("screenInfo"+"width",width+"");
         Log.i("screenInfo"+"height",height+"");
         Log.i("screenInfo"+"density",density+"");

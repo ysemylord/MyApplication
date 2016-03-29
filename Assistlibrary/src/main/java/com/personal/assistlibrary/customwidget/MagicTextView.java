@@ -79,6 +79,8 @@ public class MagicTextView extends TextView {
             sb.append("0");
         }
          fnum=new DecimalFormat(sb.toString());
+
+
     }
 
     public void begin(){
