@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.sijia.myapplication.ContainerActivity;
 import com.example.sijia.myapplication.FormatAdapter.SimpleListViewBaseAdapter;
 import com.example.sijia.myapplication.R;
+import com.example.sijia.myapplication.fragment.AnimationFragment.AnimationFragmenntList;
 import com.example.sijia.myapplication.fragment.CustomWidget.CustomWidgetList;
 import com.example.sijia.myapplication.fragment.WidgetUse.RadioButtonFragment;
 import com.example.sijia.myapplication.fragment.WidgetUse.RatingBarFragment;
@@ -40,37 +41,50 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        initSystemBar((Activity)Main2Activity.this);
+        initSystemBar((Activity) Main2Activity.this);
         ButterKnife.bind(this);
-        mNames=new ArrayList<>();
+        mNames = new ArrayList<>();
         mNames.add("RatingBar");
         mNames.add("SeekBar");
         mNames.add("RadioButton");
         mNames.add("WebView");
         mNames.add("CustomWidgetList 自定义控件");
-        ShowFragnemtnAdapter showFragnemtnAdapter=new ShowFragnemtnAdapter(this,mNames);
+        mNames.add("动画");
+        ShowFragnemtnAdapter showFragnemtnAdapter = new ShowFragnemtnAdapter(this, mNames);
         mFragmentListView.setAdapter(showFragnemtnAdapter);
         mFragmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(Main2Activity.this,ContainerActivity.class);
+                Intent intent = new Intent(Main2Activity.this, ContainerActivity.class);
 
-                if(position==0){
+                if (position == 0) {
                     intent.putExtra("Fragment", new RatingBarFragment());
-                }else if(position==1){
+                } else if (position == 1) {
                     intent.putExtra("Fragment", new SeekBarFragment());
-                }else if(position==2){
+                } else if (position == 2) {
                     intent.putExtra("Fragment", new RadioButtonFragment());
-                }else if(position==3){
+                } else if (position == 3) {
                     intent.putExtra("Fragment", new WebViewFragment());
-                }else if(position==4){
+                } else if (position == 4) {
                     intent.putExtra("Fragment", new CustomWidgetList());
+                }else if(position==5){
+                    intent.putExtra("Fragment", new AnimationFragmenntList());
                 }
 
                 startActivity(intent);
             }
         });
+       // test();
     }
+
+ /*   private void test() {
+
+        RadioGroup radioGroup= (RadioGroup) findViewById(R.id.radio_container);
+        RadioButton radioButton= (RadioButton) LayoutInflater.from(this).inflate(R.layout.radio_btn_time,radioGroup,false);
+        radioGroup.addView(radioButton);
+
+    }*/
+
     public static void initSystemBar(Activity activity) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
