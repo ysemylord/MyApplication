@@ -28,6 +28,8 @@ public class MainActivity extends FragmentActivity {
     final String EXPLORETAG = "explore";
     @Bind(R.id.camera_tab)
     RadioButton mCameraTab;
+    @Bind(R.id.inspire_tab)
+    RadioButton mInspireTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,8 @@ public class MainActivity extends FragmentActivity {
                 showFragment(checkedId);
             }
         });
-        mCameraTab.setChecked(true);
+       // mCameraTab.setChecked(true);
+        mInspireTab.setChecked(true);
     }
 
     private Fragment showFragment(int checkedId) {

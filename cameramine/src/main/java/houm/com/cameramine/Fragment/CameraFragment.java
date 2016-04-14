@@ -144,6 +144,9 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
     }
 
 
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        release();
+    }
 }

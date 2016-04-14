@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CameraMine</string>
+    <string name="title_activity_activity_detail">ActivityDetailActivity</string>
 </resources>
