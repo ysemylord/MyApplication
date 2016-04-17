@@ -43,6 +43,7 @@ class JoinerViewHolder extends BaseViewHolder<AVObject> {
     @Override
     public void setData( AVObject activity) {
         AVFile imageAVF=activity.getAVFile("Image");
+        if(imageAVF==null)return;
         String url= imageAVF.getUrl();
         ImageLoader.getInstance().displayImage(url,mJoinerImage);
     }

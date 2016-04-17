@@ -1,11 +1,14 @@
 package houm.com.cameramine;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.avos.avoscloud.AVException;
@@ -29,10 +32,13 @@ public class ActivityDetailActivity extends AppCompatActivity {
     ImageView mBackdrop;
     @Bind(R.id.recyclerView)
     EasyRecyclerView mRecyclerView;
+    @Bind(R.id.vote_btn)
+    FloatingActionButton mFloatingActionButton;
     private AVObject mActiAvObject;
     private String mActivityId;
     private JoinerAdapter mJoinerAdapter;
     private SwipeRefreshLayout.OnRefreshListener mOnrefrsh;
+    public static final String TO_VOTE = "houm.com.cameramineActivityDetailActivity." + "TO_VOTE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +64,22 @@ public class ActivityDetailActivity extends AppCompatActivity {
         SpacesItemDecoration decoration = new SpacesItemDecoration(8);
         mRecyclerView.addItemDecoration(decoration);
 
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityDetailActivity.this, VoteActivity.class);
+                String[] joiner = new String[mJoinerAdapter.getCount()];
+                for (int i = 0; i < mJoinerAdapter.getCount(); i++) {
+                    AVObject joinerAVo = mJoinerAdapter.getItem(i);
+                    joiner[i] = joinerAVo.toString();
+                }
+                intent.putExtra(ActivityDetailActivity.TO_VOTE, joiner);
+                startActivity(intent);
+            }
+        });
 
-        mRecyclerView.setRefreshListener( mOnrefrsh =new SwipeRefreshLayout.OnRefreshListener() {
+
+        mRecyclerView.setRefreshListener(mOnrefrsh = new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
 
@@ -70,11 +90,12 @@ public class ActivityDetailActivity extends AppCompatActivity {
         });
         mOnrefrsh.onRefresh();
 
+
     }
 
     private void QUERY() {
         AVQuery<AVObject> query = new AVQuery<AVObject>("act_joiner");
-        // query.whereEqualTo("joiner_activity", mActiAvObject);//条件查询
+        query.whereEqualTo("joiner_activity", mActiAvObject);//条件查询
 
         query.findInBackground(new FindCallback<AVObject>() {
             public void done(List<AVObject> avObjects, AVException e) {

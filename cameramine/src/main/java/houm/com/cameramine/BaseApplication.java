@@ -28,7 +28,19 @@ public class BaseApplication extends Application {
         testObject.put("foo", "bar");
         testObject.saveInBackground();*/
         initImageLoader(getApplicationContext());
-       //savedemo();
+      // savedemo();
+       // guanlian();
+    }
+
+    private void guanlian() {
+        AVObject myComment = new AVObject("act_joiner");
+        myComment.put("name", "参与者3");
+        myComment.put("joiner_activity", AVObject.createWithoutData("activity", "570e4ef5df0eea0064608693"));
+        myComment.saveInBackground();
+        AVObject myComment2 = new AVObject("act_joiner");
+        myComment2.put("name", "参与者4");
+        myComment2.put("joiner_activity", AVObject.createWithoutData("activity", "570e4ef5df0eea0064608693"));
+        myComment2.saveInBackground();
     }
 
     private void savedemo() {
@@ -38,11 +50,16 @@ public class BaseApplication extends Application {
 
 // 创建参与者信息
         AVObject myComment = new AVObject("act_joiner");
-        myComment.put("name", "封行。");
+        myComment.put("name", "参与者1");
+
+        // 创建参与者信息
+        AVObject myComment2 = new AVObject("act_joiner");
+        myComment.put("name", "参与者2");
 
 // 添加一个关联的活动对象
         myComment.put("joiner_activity", activity);
 
+        myComment2.put("joiner_activity",activity);
 // 这将保存两条数据，分别为微博信息和评论信息
         myComment.saveInBackground();
     }

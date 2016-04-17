@@ -26,6 +26,13 @@
             android:label="@string/title_activity_activity_detail"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity android:name=".Fragment.VoteActivity" >
+        </activity>
+        <activity android:name="com.lorentzos.swipecards.VoteTESTActivity" >
+        </activity>
+
+        <activity android:name="houm.com.cameramine.VoteActivity" >
+        </activity>
     </application>
 
 </manifest>
