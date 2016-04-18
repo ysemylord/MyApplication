@@ -10,27 +10,16 @@
     <!--Toolbar-->
     <include layout="@layout/custom_tool_bar" />
 
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/custom_drawer_left_layout"></include>
-    <!--    <LinearLayout
-            android:id="@+id/dl_left"
-            android:layout_gravity="start"
-            android:background="#ffffff"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:id="@+id/iv_main"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/defautl_header" />
-        </LinearLayout>-->
 
 
+
+         <!--主内容-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -89,7 +78,8 @@
         </RelativeLayout>
 
 
-
+        <!--侧滑栏 -->
+        <include layout="@layout/custom_drawer_left_layout"></include>
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>
 

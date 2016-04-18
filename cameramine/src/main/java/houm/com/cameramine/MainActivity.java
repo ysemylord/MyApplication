@@ -1,5 +1,6 @@
 package houm.com.cameramine;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -87,14 +88,11 @@ public class MainActivity extends ActionBarActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intetn = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intetn);
             }
         });
     }
-
-
-
-
 
 
     private Fragment showFragment(int checkedId) {
