@@ -37,6 +37,12 @@ public class LoginFragment extends Fragment implements LoginContact.View {
         View root = inflater.inflate(R.layout.fragment_login_layout, container, false);
         mProgressDialog = new ProgressDialog(getActivity());
         ButterKnife.bind(this, root);
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.login();
+            }
+        });
         return root;
     }
 

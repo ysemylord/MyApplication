@@ -32,10 +32,10 @@ public class LoginPresenter implements LoginContact.Presenter {
                     @Override
                     public void done(AVUser avUser, AVException e) {
                         mLoginContactView.hideLoading();
-                        if(e==null){
-                            Log.i("login","成功");
-                        }else{
-                            Log.e("login","失败");
+                        if (e == null) {
+                            Log.i("login", "成功");
+                        } else {
+                            Log.e("login", "失败");
                         }
 
                     }

@@ -45,6 +45,8 @@ public class MainActivity extends ActionBarActivity {
     DrawerLayout mDrawerLayout;
     @Bind(R.id.login_btn)
     Button mLoginBtn;
+    @Bind(R.id.register_btn)
+    Button mRegisterBtn;
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
@@ -89,6 +91,14 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intetn = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intetn);
+            }
+        });
+
+        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intetn = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intetn);
             }
         });
