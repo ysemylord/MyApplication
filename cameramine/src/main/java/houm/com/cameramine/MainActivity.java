@@ -1,11 +1,17 @@
 package houm.com.cameramine;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,7 +22,7 @@ import houm.com.cameramine.Fragment.CameraFragment;
 import houm.com.cameramine.Fragment.ExploreFragment;
 import houm.com.cameramine.Fragment.InspireFragment;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
 
     @Bind(R.id.rg)
     RadioGroup mRG;
@@ -30,12 +36,22 @@ public class MainActivity extends FragmentActivity {
     RadioButton mCameraTab;
     @Bind(R.id.inspire_tab)
     RadioButton mInspireTab;
+    @Bind(R.id.tl_custom)
+    Toolbar mTlCustom;
+    @Bind(R.id.explore_tab)
+    RadioButton exploreTab;
+    @Bind(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+    @Bind(R.id.login_btn)
+    Button mLoginBtn;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        init();
         mFraMan = getSupportFragmentManager();
         mRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -43,9 +59,43 @@ public class MainActivity extends FragmentActivity {
                 showFragment(checkedId);
             }
         });
-       // mCameraTab.setChecked(true);
+        // mCameraTab.setChecked(true);
         mInspireTab.setChecked(true);
     }
+
+    private void init() {
+        mTlCustom.setTitle("Toolbar");//设置Toolbar标题
+        mTlCustom.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
+        setSupportActionBar(mTlCustom);
+        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mTlCustom, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+
+
+
+
 
     private Fragment showFragment(int checkedId) {
         Fragment fragment = null;
