@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sijia.myapplication" >
+    package="com.example.sijia.myapplication">
 
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -21,8 +21,10 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+        </activity>
+
         <activity android:name=".WifiActivity" />
         <activity android:name=".ViewPagerActivity" />
         <activity android:name=".DialogActivity" />
@@ -44,39 +46,37 @@
         <activity
             android:name=".activity.Main2Activity"
             android:clipToPadding="true"
-            android:label="@string/title_activity_main2" >
-           <!-- <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_main2">
+              <intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+                  <category android:name="android.intent.category.LAUNCHER" />
+              </intent-filter>
         </activity>
         <activity
             android:name=".ContainerActivity"
-            android:label="@string/title_activity_container" />
+            android:label="@string/title_activity_container" >
+            </activity>
         <activity
             android:name=".MyTest"
-            android:label="@string/title_activity_main2" >
-        </activity>
+            android:label="@string/title_activity_main2"></activity>
         <activity
             android:name=".HtmlSource"
-            android:label="@string/title_activity_html_source" >
-        </activity>
+            android:label="@string/title_activity_html_source"></activity>
         <activity
             android:name=".activity.ForBroadCastReceiver.BroadcastReceiverDemoActivity"
-            android:label="@string/title_activity_broadcast_receiver_demo" >
-        </activity>
+            android:label="@string/title_activity_broadcast_receiver_demo"></activity>
         <activity
             android:name=".activity.ForBroadCastReceiver.SendBroadCastActivity"
             android:label="@string/title_activity_send_broad_cast" />
         <activity
             android:name=".EasyrecyclerviewActivity"
-            android:label="@string/title_activity_easyrecyclerview" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_easyrecyclerview">
+            <!--            <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>-->
         </activity>
     </application>
 

@@ -17,6 +17,14 @@ public class LoginContact {
 
         String getUserPWDTVValue();
 
+        void setUserPhoneTVValue(String name);
+
+        void setUserPWDTVValue(String pwd);
+
+        void finish();
+
+        void fialeNotice();
+
     }
 
     public interface Presenter extends BasePresenter {

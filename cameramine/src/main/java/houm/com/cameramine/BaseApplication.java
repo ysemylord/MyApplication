@@ -2,6 +2,7 @@ package houm.com.cameramine;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.avos.avoscloud.AVOSCloud;
@@ -9,6 +10,8 @@ import com.avos.avoscloud.AVObject;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
@@ -20,6 +23,19 @@ import java.io.File;
  * Created by xuyaf on 2016/4/11.
  */
 public class BaseApplication extends Application {
+
+
+    private File picDir;
+    public boolean isJoiningActivity;//默认为false
+    public File choosedFile;
+    public String choosedActivityObjectId;
+
+
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private static BaseApplication baseApplication;
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -28,10 +44,14 @@ public class BaseApplication extends Application {
         testObject.put("foo", "bar");
         testObject.saveInBackground();*/
         initImageLoader(getApplicationContext());
+        baseApplication=this;
       // savedemo();
        // guanlian();
     }
 
+    public static BaseApplication getInstance(){
+        return baseApplication;
+    }
     private void guanlian() {
         AVObject myComment = new AVObject("act_joiner");
         myComment.put("name", "参与者3");
@@ -41,6 +61,32 @@ public class BaseApplication extends Application {
         myComment2.put("name", "参与者4");
         myComment2.put("joiner_activity", AVObject.createWithoutData("activity", "570e4ef5df0eea0064608693"));
         myComment2.saveInBackground();
+    }
+
+    public File getPicDir() {
+        if(picDir!=null){//Application中想外提供的常量都应该有此判断
+            return picDir;
+        }
+        picDir=new File( getFilesDir(),"picture");
+        if(picDir.exists()==false){
+            picDir.mkdirs();
+        }
+        return picDir;
+    }
+
+    //注，这里不是单例模式，是为了防止editor为空
+    public  SharedPreferences.Editor getEditor(){
+        if(editor==null){
+            editor=getSharedPreferences("user",Context.MODE_PRIVATE).edit();
+        }
+        return editor;
+    }
+
+    public    SharedPreferences getSharePre(){
+        if(sharedPreferences==null){
+            sharedPreferences=getSharedPreferences("user",Context.MODE_PRIVATE);
+        }
+        return sharedPreferences;
     }
 
     private void savedemo() {
@@ -68,6 +114,19 @@ public class BaseApplication extends Application {
      * 初始化ImageLoader
      */
     private static void initImageLoader(Context context) {
+
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .showStubImage(R.drawable.defaut)          // image在加载过程中，显示的图片
+                .showImageForEmptyUri(R.drawable.defaut)  // empty URI时显示的图片
+                .resetViewBeforeLoading(false)  // default
+                .delayBeforeLoading(1000)
+                .cacheInMemory(true)           // default 缓存至内存
+                .cacheOnDisc(true)
+                .build()      ;
+
+
+
+
         File cacheDir = StorageUtils.getOwnCacheDirectory(context,
                 "bee_k77/Cache");// 获取到缓存的目录地址
         Log.e("cacheDir", cacheDir.getPath());
@@ -97,6 +156,7 @@ public class BaseApplication extends Application {
                         // .memoryCache(new UsingFreqLimitedMemoryCache(2 * 1024 * 1024))
                         // .memoryCacheSize(2 * 1024 * 1024)
                         //硬盘缓存50MB
+                .memoryCache(new LruMemoryCache(10* 1024 * 1024))
                 .diskCacheSize(50 * 1024 * 1024)
                         //将保存的时候的URI名称用MD5
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
@@ -109,6 +169,7 @@ public class BaseApplication extends Application {
                         // .imageDownloader(new BaseImageDownloader(context, 5 * 1000,
                         // 30 * 1000)) // connectTimeout (5 s), readTimeout (30 s)超时时间
                 .writeDebugLogs() // Remove for release app
+                .defaultDisplayImageOptions(options)
                 .build();
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);// 全局初始化此配置

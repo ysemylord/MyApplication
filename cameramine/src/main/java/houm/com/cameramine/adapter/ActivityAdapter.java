@@ -40,7 +40,6 @@ class PersonViewHolder extends BaseViewHolder<AVObject> {
         mCoverImage=$(R.id.cover);
         mJoinerTV = $(R.id.joiner);
         mRewardTV=$(R.id.rewarde);
-
     }
 
 

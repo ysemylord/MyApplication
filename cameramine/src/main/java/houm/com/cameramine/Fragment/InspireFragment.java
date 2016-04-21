@@ -45,8 +45,8 @@ public class InspireFragment extends Fragment {
         ButterKnife.bind(this, view);
         mRecyclerView.setLayoutManager(mLinearLayoutManager = new LinearLayoutManager(getActivity()));
         mActivityAdapter = new ActivityAdapter(getActivity());
-
         mRecyclerView.setAdapter(mActivityAdapter);
+
         mActivityAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {

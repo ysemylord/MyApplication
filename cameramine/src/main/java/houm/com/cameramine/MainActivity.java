@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 import houm.com.cameramine.Fragment.CameraFragment;
 import houm.com.cameramine.Fragment.ExploreFragment;
 import houm.com.cameramine.Fragment.InspireFragment;
+import houm.com.cameramine.util.Util;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -53,6 +54,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Util.initSystemBar(this);
         ButterKnife.bind(this);
         init();
         mFraMan = getSupportFragmentManager();
@@ -69,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
     private void init() {
         mTlCustom.setTitle("Toolbar");//设置Toolbar标题
         mTlCustom.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
+        mTlCustom.setTitle("快拍照");
         setSupportActionBar(mTlCustom);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

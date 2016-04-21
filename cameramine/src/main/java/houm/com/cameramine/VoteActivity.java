@@ -2,7 +2,6 @@ package houm.com.cameramine;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import houm.com.cameramine.bean.MyCardBean;
+import houm.com.cameramine.util.Util;
 
 public class VoteActivity extends Activity {
 
@@ -34,6 +34,7 @@ public class VoteActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote);
+        Util.initSystemBar(this);
         left = (ImageView) findViewById(R.id.left);
         right = (ImageView) findViewById(R.id.right);
         // finishIM= (ImageView) findViewById(R.id.finish_im);
