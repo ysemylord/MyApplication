@@ -45,11 +45,14 @@
             android:name=".activity.Main2Activity"
             android:clipToPadding="true"
             android:label="@string/title_activity_main2" >
-           <!-- <intent-filter>
+
+            <!--
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".ContainerActivity"
@@ -61,6 +64,14 @@
         <activity
             android:name=".HtmlSource"
             android:label="@string/title_activity_html_source" >
+
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".activity.ForBroadCastReceiver.BroadcastReceiverDemoActivity"
@@ -72,6 +83,39 @@
         <activity
             android:name=".EasyrecyclerviewActivity"
             android:label="@string/title_activity_easyrecyclerview" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".AnActivity"
+            android:label="@string/title_activity_an" >
+
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".ProgressBarDemoActivity"
+            android:label="@string/title_activity_progress_bar_demo" >
+     <!--       <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".FrameAniTestActivity"
+            android:label="@string/title_activity_frame_ani_test" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

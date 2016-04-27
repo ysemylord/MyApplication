@@ -1,0 +1,41 @@
+package com.example.sijia.myapplication;
+
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class FrameAniTestActivity extends AppCompatActivity {
+
+    @Bind(R.id.im_ani)
+    ImageView mImAni;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_frame_ani_test);
+        ButterKnife.bind(this);
+
+    }
+
+
+    public void start(View view) {
+        ((AnimationDrawable)mImAni.getDrawable()).start();
+    }
+
+    public void stop(View view) {
+        ((AnimationDrawable)mImAni.getDrawable()).stop();
+        AnimationDrawable animationDrawable1= (AnimationDrawable) mImAni.getDrawable();
+        AnimationDrawable animationDrawable2= (AnimationDrawable) mImAni.getDrawable();
+        if(animationDrawable1.equals(animationDrawable2)){
+            Log.i("FrameAniTestActivity","相等");
+        }else{
+            Log.i("FrameAniTestActivity","不相等");
+        }
+    }
+}

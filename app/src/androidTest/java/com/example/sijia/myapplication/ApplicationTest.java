@@ -9,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.sijia.myapplication.util.Util;
 import com.example.sijia.myapplication.util.VolleyQuenueInstence;
 import com.orhanobut.logger.Logger;
 
@@ -21,6 +22,8 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         super(Application.class);
     }
     public void test(){
+
+        Util.outScreenInfo(getContext());
 
         int currentapiVersion=android.os.Build.VERSION.SDK_INT;
         if(currentapiVersion>= Build.VERSION_CODES.JELLY_BEAN){

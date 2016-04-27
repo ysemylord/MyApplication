@@ -43,6 +43,7 @@ public class PullToRefreshDemoActivity extends Activity {
         datas = new ArrayList<>();
 
 
+
         mArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, datas);
         mListView.setAdapter(mArrayAdapter);
 

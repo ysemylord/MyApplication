@@ -15,4 +15,7 @@
     <string name="title_activity_send_broad_cast">SendBroadCastActivity</string>
     <string name="send">发送广播</string>
     <string name="title_activity_easyrecyclerview">EasyrecyclerviewActivity</string>
+    <string name="title_activity_an">AnActivity</string>
+    <string name="title_activity_progress_bar_demo">ProgressBarDemoActivity</string>
+    <string name="title_activity_frame_ani_test">FrameAniTestActivity</string>
 </resources>
