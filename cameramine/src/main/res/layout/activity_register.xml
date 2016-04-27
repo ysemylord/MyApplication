@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    >
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/phoneWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="4dp">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_centerInParent="true"
+        android:hint="电话"
+        android:ems="10"
+        android:id="@+id/phone_et"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/passwordWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/phoneWrapper"
+        android:layout_marginTop="4dp">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="姓名"
+        android:ems="10"
+        android:id="@+id/name_et" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/pwdWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phoneWrapper"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_marginTop="20dp"
+        android:hint="密码"
+        android:ems="10"
+        android:layout_below="@id/phoneWrapper"
+        android:id="@+id/pwd_et" />
+</android.support.design.widget.TextInputLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:layout_below="@id/pwdWrapper"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/register_btn" />
+</RelativeLayout>

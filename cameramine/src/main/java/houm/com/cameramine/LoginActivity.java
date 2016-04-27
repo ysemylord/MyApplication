@@ -2,7 +2,6 @@ package houm.com.cameramine;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
 import butterknife.Bind;
@@ -10,7 +9,7 @@ import butterknife.ButterKnife;
 import houm.com.cameramine.presenter.LoginPresenter;
 import houm.com.cameramine.view.LoginFragment;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     @Bind(R.id.container)
     FrameLayout mContainer;
@@ -33,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         new LoginPresenter(mLoginFragment);//Presenter
+
+        getSupportActionBar().setTitle("登陆");
     }
 
     @Override

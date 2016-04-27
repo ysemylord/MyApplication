@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -37,6 +38,12 @@ public class LoginFragment extends Fragment implements LoginContact.View {
         View root = inflater.inflate(R.layout.fragment_login_layout, container, false);
         mProgressDialog = new ProgressDialog(getActivity());
         ButterKnife.bind(this, root);
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.login();
+            }
+        });
         return root;
     }
 
@@ -72,6 +79,26 @@ public class LoginFragment extends Fragment implements LoginContact.View {
     @Override
     public String getUserPWDTVValue() {
         return mUserPwdEt.getText().toString().trim();
+    }
+
+    @Override
+    public void setUserPhoneTVValue(String name) {
+         mUserNameEt.setText(name);
+    }
+
+    @Override
+    public void setUserPWDTVValue(String pwd) {
+        mUserPwdEt.setText(pwd);
+    }
+
+    @Override
+    public void finish() {
+        getActivity().finish();
+    }
+
+    @Override
+    public void fialeNotice() {
+        Toast.makeText(getActivity(),"登录失败，请重试",Toast.LENGTH_LONG);
     }
 
 
