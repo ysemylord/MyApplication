@@ -1,4 +1,4 @@
-package com.example.sijia.myapplication;
+package com.example.sijia.myapplication.TestActivity;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.example.sijia.myapplication.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
