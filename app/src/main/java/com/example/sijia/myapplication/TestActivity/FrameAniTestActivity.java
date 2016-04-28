@@ -16,6 +16,9 @@ import butterknife.ButterKnife;
 
 public class FrameAniTestActivity extends AppCompatActivity {
 
+    /**
+     * 幀動畫
+     */
     @Bind(R.id.im_ani)
     ImageView mImAni;
 
@@ -52,4 +55,6 @@ public class FrameAniTestActivity extends AppCompatActivity {
         }
         mContainer.addView(container);
     }
+
+
 }

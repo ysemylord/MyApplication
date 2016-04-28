@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:id="@+id/container"
-    tools:context="com.example.sijia.myapplication.FrameAniTestActivity">
+    tools:context="com.example.sijia.myapplication.TestActivity.FrameAniTestActivity">
 
     <ImageView
         android:id="@+id/im_ani"
