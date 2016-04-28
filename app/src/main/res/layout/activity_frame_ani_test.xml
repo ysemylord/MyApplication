@@ -7,13 +7,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:id="@+id/container"
     tools:context="com.example.sijia.myapplication.FrameAniTestActivity">
 
     <ImageView
         android:id="@+id/im_ani"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/header_loading_ani" />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,5 +34,11 @@
         android:text="结束"
         android:onClick="stop"
         />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="增加"
+        android:onClick="add"
+        />
+</LinearLayout>
 </LinearLayout>
