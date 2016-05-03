@@ -17,6 +17,6 @@ public class DialogActivity extends Activity {
 
     public void showDialog(View view) {
         myDialog = new BaseMyDialog(this);
-        myDialog.showInBottom();
+        myDialog.show();
     }
 }

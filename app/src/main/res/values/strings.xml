@@ -18,4 +18,6 @@
     <string name="title_activity_an">AnActivity</string>
     <string name="title_activity_progress_bar_demo">ProgressBarDemoActivity</string>
     <string name="title_activity_frame_ani_test">FrameAniTestActivity</string>
+    <string name="title_activity_scroll_test">ScrollTestActivity</string>
+    <string name="title_activity_alert_dialog">AlertDialogActivity</string>
 </resources>

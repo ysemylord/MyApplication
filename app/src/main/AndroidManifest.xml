@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sijia.myapplication" >
+    package="com.example.sijia.myapplication">
 
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -21,11 +21,17 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".WifiActivity" />
         <activity android:name=".ViewPagerActivity" />
-        <activity android:name=".DialogActivity" />
+        <activity android:name=".DialogActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".PullToRefreshDemoActivity" />
         <activity android:name=".PullToRefreshDividePageDemoActivity" />
         <activity android:name=".FlowRadioButtonActivity" />
@@ -44,7 +50,7 @@
         <activity
             android:name=".activity.Main2Activity"
             android:clipToPadding="true"
-            android:label="@string/title_activity_main2" >
+            android:label="@string/title_activity_main2">
 
             <!--
                 <intent-filter>
@@ -59,11 +65,10 @@
             android:label="@string/title_activity_container" />
         <activity
             android:name=".MyTest"
-            android:label="@string/title_activity_main2" >
-        </activity>
+            android:label="@string/title_activity_main2"></activity>
         <activity
             android:name=".HtmlSource"
-            android:label="@string/title_activity_html_source" >
+            android:label="@string/title_activity_html_source">
 
             <!--
                 <intent-filter>
@@ -75,14 +80,13 @@
         </activity>
         <activity
             android:name=".activity.ForBroadCastReceiver.BroadcastReceiverDemoActivity"
-            android:label="@string/title_activity_broadcast_receiver_demo" >
-        </activity>
+            android:label="@string/title_activity_broadcast_receiver_demo"></activity>
         <activity
             android:name=".activity.ForBroadCastReceiver.SendBroadCastActivity"
             android:label="@string/title_activity_send_broad_cast" />
         <activity
             android:name=".EasyrecyclerviewActivity"
-            android:label="@string/title_activity_easyrecyclerview" >
+            android:label="@string/title_activity_easyrecyclerview">
 
             <!--
             <intent-filter>
@@ -94,7 +98,7 @@
         </activity>
         <activity
             android:name=".AnActivity"
-            android:label="@string/title_activity_an" >
+            android:label="@string/title_activity_an">
 
             <!--
                 <intent-filter>
@@ -106,7 +110,7 @@
         </activity>
         <activity
             android:name=".ProgressBarDemoActivity"
-            android:label="@string/title_activity_progress_bar_demo" >
+            android:label="@string/title_activity_progress_bar_demo">
 
             <!--
                 <intent-filter>
@@ -118,19 +122,43 @@
         </activity>
         <activity
             android:name=".TestActivity.FrameAniTestActivity"
-            android:label="@string/title_activity_frame_ani_test" >
-       <!--     <intent-filter>
+            android:label="@string/title_activity_frame_ani_test">
+
+            <!--
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
-        <activity android:name=".TestActivity.TweenAniamtionTestActivity" >
+        <activity android:name=".TestActivity.TweenAniamtionTestActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".CustomViewTest.ScrollTestActivity"
+            android:label="@string/title_activity_scroll_test">
+            <!--       <intent-filter>
+                       <action android:name="android.intent.action.MAIN" />
+
+                       <category android:name="android.intent.category.LAUNCHER" />
+                   </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".DialogTest.AlertDialogActivity"
+            android:label="@string/title_activity_alert_dialog">
+          <!--  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
     </application>
 

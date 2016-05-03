@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal" 
+  >
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textStyle="normal"
+       	android:text="快健康提示"
+        />
+    
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+         android:padding="10dp"
+       	android:text="  订单达到满赠条件，但是赠品不足弹框提示“亲爱的小主，订单达到满赠条件，但是赠品库存不足，继续购买将无赠品赠送，确认是否继续购买？ 取消 继续购买"
+        />
+     
+     
+     
+     <LinearLayout 
+         android:layout_width="fill_parent"
+         android:layout_height="40dp"
+         android:layout_marginTop="30dp"
+         android:orientation="horizontal"
+         >
+         
+         <Button 
+             android:id="@+id/ok_btn"
+             android:layout_width="150dp"
+             android:layout_height="fill_parent"
+             android:text="确认"
+             android:gravity="center"
+             android:textSize="16dp"
+             />
+         
+         
+         <Button 
+             android:id="@+id/cancel_btn"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:text="取消"
+             android:gravity="center"
+             android:textSize="16dp"
+             />
+         
+         
+     </LinearLayout>
+    
+    
+    
+
+</LinearLayout>

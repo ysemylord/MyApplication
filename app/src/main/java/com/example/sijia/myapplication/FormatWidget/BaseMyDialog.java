@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.sijia.myapplication.R;
 import com.example.sijia.myapplication.util.Util;
 
 
@@ -29,7 +30,7 @@ public class BaseMyDialog extends AlertDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //setContentView(R.layout.layout_mydialog);
+        setContentView(R.layout.layout_mydialog);
     }
 
 

@@ -23,7 +23,34 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
     public void test(){
 
-        Util.outScreenInfo(getContext());
+
+/*
+
+        Map<String,String> maps=new HashMap<>();
+        maps.put("路径1","2014.3.1");
+        maps.put("路径2","2014.3.1");
+        maps.put("路径3","2014.3.2");
+        maps.put("路径4","2014.3.3");
+
+        Map <String,List<String>> res=new HashMap<>();
+        maps.entrySet().size();
+        for(Map.Entry entry:maps.entrySet()) {
+            String keyPath = (String) entry.getKey();
+            String keyTime = (String) entry.getValue();
+            List list = res.get(keyTime);
+            if (list == null) {
+                list = new ArrayList();
+                list.add(keyPath);
+                res.put(keyTime, list);
+            } else {
+                list.add(keyPath);
+            }
+        }
+*/
+
+
+
+            Util.outScreenInfo(getContext());
 
         int currentapiVersion=android.os.Build.VERSION.SDK_INT;
         if(currentapiVersion>= Build.VERSION_CODES.JELLY_BEAN){

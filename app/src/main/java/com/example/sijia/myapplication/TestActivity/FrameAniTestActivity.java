@@ -27,6 +27,8 @@ public class FrameAniTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame_ani_test);
         ButterKnife.bind(this);
+        mImAni.getX();
+        mImAni.getLeft();
 
     }
 
