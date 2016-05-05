@@ -58,13 +58,21 @@ public class AppAlbumActivity extends BaseActivity {
                 //
             }
         });
+
+        notRX();
+    }
+
+
+
+
+    private void notRX() {
         new Thread(new Runnable() {
 
             @Override
             public void run() {
-                String picDirStr=BaseApplication.getInstance().getPicDir().getAbsolutePath();
-                List<String> chileListmy=new ArrayList<String>();
-                for(File file:BaseApplication.getInstance().getPicDir().listFiles()){
+                String picDirStr = BaseApplication.getInstance().getPicDir().getAbsolutePath();
+                List<String> chileListmy = new ArrayList<String>();
+                for (File file : BaseApplication.getInstance().getPicDir().listFiles()) {
                     chileListmy.add(file.getAbsolutePath());
                 }
                 mGruopMap.put(picDirStr, chileListmy);
@@ -73,7 +81,7 @@ public class AppAlbumActivity extends BaseActivity {
                 Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
                 ContentResolver mContentResolver = getContentResolver();
 
-                //只查询jpeg和png的图片  
+                //只查询jpeg和png的图片
                 Cursor mCursor = mContentResolver.query(mImageUri, null,
                         MediaStore.Images.Media.MIME_TYPE + "=? or "
                                 + MediaStore.Images.Media.MIME_TYPE + "=?",
@@ -84,15 +92,15 @@ public class AppAlbumActivity extends BaseActivity {
                 }
 
                 while (mCursor.moveToNext()) {
-                    //获取图片的路径  
+                    //获取图片的路径
                     String path = mCursor.getString(mCursor
                             .getColumnIndex(MediaStore.Images.Media.DATA));
 
-                    //获取该图片的父路径名  
+                    //获取该图片的父路径名
                     String parentName = new File(path).getParentFile().getAbsolutePath();
 
 
-                    //根据父路径名将图片放入到mGruopMap中  
+                    //根据父路径名将图片放入到mGruopMap中
                     if (!mGruopMap.containsKey(parentName)) {
                         List<String> chileList = new ArrayList<String>();
                         chileList.add(path);
@@ -111,7 +119,7 @@ public class AppAlbumActivity extends BaseActivity {
                     mAlbumBeans.add(new AlbumBean(dirName, num, firlUrl));
                 }
 
-                //通知Handler扫描图片完成  
+                //通知Handler扫描图片完成
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
