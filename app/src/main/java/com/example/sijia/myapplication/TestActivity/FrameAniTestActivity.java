@@ -14,6 +14,9 @@ import com.example.sijia.myapplication.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+/**
+ * 帧动画
+ */
 public class FrameAniTestActivity extends AppCompatActivity {
 
     /**

@@ -9,9 +9,7 @@ import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -126,7 +124,7 @@ public class CartAnimationView extends ImageView {
         //又因为Translate动画与Scale动画混用时，平移距离与Scale的缩放有关，所以Scale动画也需要代码设置
 
         //缩放
-        float startScale=1f;
+        float startScale=2f;
         float endScale=startScale*scaleFactor;
        // float endScale=0.8f;
 
