@@ -54,11 +54,14 @@
             android:name=".activity.Main2Activity"
             android:clipToPadding="true"
             android:label="@string/title_activity_main2">
-    <!--        <intent-filter>
+
+            <!--
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".ContainerActivity"
@@ -157,22 +160,29 @@
         <activity
             android:name=".DialogTest.AlertDialogActivity"
             android:label="@string/title_activity_alert_dialog">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".TestActivity.TranslateAndScaleMixActivity">
 
             <!--
-            <intent-filter>
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             -->
+
         </activity>
-        <activity android:name=".TestActivity.TranslateAndScaleMixActivity">
+        <activity android:name=".CoordinateActivityTest.ScrollTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
