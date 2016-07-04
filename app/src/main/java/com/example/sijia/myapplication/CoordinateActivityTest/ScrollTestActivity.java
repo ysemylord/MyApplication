@@ -1,7 +1,7 @@
 package com.example.sijia.myapplication.CoordinateActivityTest;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -12,7 +12,7 @@ import com.example.sijia.myapplication.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ScrollTestActivity extends AppCompatActivity {
+public class ScrollTestActivity extends Activity {
 
     @Bind(R.id.content_tv)
     TextView mContentTv;

@@ -160,11 +160,14 @@
         <activity
             android:name=".DialogTest.AlertDialogActivity"
             android:label="@string/title_activity_alert_dialog">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".TestActivity.TranslateAndScaleMixActivity">
 
@@ -177,7 +180,23 @@
             -->
 
         </activity>
-        <activity android:name=".CoordinateActivityTest.ScrollTestActivity">
+        <activity android:name=".CoordinateActivityTest.ScrollTestActivity" />
+        <activity android:name=".activity.widgetTestActivity.ReroundScrollTestActivity">
+
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".activity.EditTextActivity">
+
+        </activity>
+        <activity android:name=".activity.TestMenuActivity"
+            android:theme="@style/AppBaseThemeActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
