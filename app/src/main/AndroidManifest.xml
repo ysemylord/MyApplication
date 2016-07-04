@@ -191,12 +191,17 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".activity.EditTextActivity">
+        <activity android:name=".activity.EditTextActivity"></activity>
+        <activity
+            android:name=".activity.TestMenuActivity"
+            android:theme="@style/AppBaseThemeActionBar">
+<!--            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
-        <activity android:name=".activity.TestMenuActivity"
-            android:theme="@style/AppBaseThemeActionBar"
-            >
+        <activity android:name=".activity.widgetTestActivity.PopWindowTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
