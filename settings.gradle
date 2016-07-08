@@ -1,2 +1,2 @@
-include ':app', ':TabHost', ':WechatTab', ':cameramine', ':Assistlibrary', ':rxlearn'
+include ':app', ':TabHost', ':WechatTab', ':cameramine', ':Assistlibrary', ':rxlearn', ':databindtest'
 include ':wifiConnecter'
