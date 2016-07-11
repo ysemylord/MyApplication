@@ -1,0 +1,10 @@
+{
+  "returnCode": 200,
+  "returnDesc": "成功",
+  "returnData": "b45f65603c5d12b6b37561bba35e7547",
+  "name":"xyabo",
+  "age":23,
+  "hobby":"reading",
+  "dream":"getting",
+  "credits":45
+}
