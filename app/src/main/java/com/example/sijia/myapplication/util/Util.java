@@ -174,5 +174,9 @@ public class Util {
             }
         });
     }
-
+    public static String getLocalMacAddress(Context context) {
+        WifiManager wifi = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = wifi.getConnectionInfo();
+        return info.getMacAddress();
+    }
 }

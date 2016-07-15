@@ -1,7 +1,6 @@
 package com.example.sijia.myapplication;
 
 import android.app.Application;
-import android.os.Build;
 import android.test.ApplicationTestCase;
 import android.util.Log;
 
@@ -13,6 +12,8 @@ import com.example.sijia.myapplication.util.Util;
 import com.example.sijia.myapplication.util.VolleyQuenueInstence;
 import com.orhanobut.logger.Logger;
 
+import junit.framework.Assert;
+
 import java.security.MessageDigest;
 
 
@@ -23,47 +24,14 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
         super(Application.class);
     }
+
+    public void testContext(){
+        Assert.assertNotNull(getContext().getResources());
+    }
+
     public void test(){
-        String clinet="ios+324235435435";
-        String str=MD5(clinet+"+ggCJall=3");
-        Log.i("md5",str);
-
-/*
-
-        Map<String,String> maps=new HashMap<>();
-        maps.put("路径1","2014.3.1");
-        maps.put("路径2","2014.3.1");
-        maps.put("路径3","2014.3.2");
-        maps.put("路径4","2014.3.3");
-
-        Map <String,List<String>> res=new HashMap<>();
-        maps.entrySet().size();
-        for(Map.Entry entry:maps.entrySet()) {
-            String keyPath = (String) entry.getKey();
-            String keyTime = (String) entry.getValue();
-            List list = res.get(keyTime);
-            if (list == null) {
-                list = new ArrayList();
-                list.add(keyPath);
-                res.put(keyTime, list);
-            } else {
-                list.add(keyPath);
-            }
-        }
-*/
-
-
-
-            Util.outScreenInfo(getContext());
-
-        int currentapiVersion=android.os.Build.VERSION.SDK_INT;
-        if(currentapiVersion>= Build.VERSION_CODES.JELLY_BEAN){
-              Log.i("mes",">=");
-
-        }else{
-            Log.i("mes","=<");
-        }
-
+        String macAddress=Util.getLocalMacAddress(getContext());
+        Log.i("macAddress",macAddress);
       /*   float i=5f/2;
         Log.i("value",i+"");
 

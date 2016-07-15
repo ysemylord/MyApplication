@@ -7,8 +7,8 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.example.sijia.myapplication.FormatAdapter.FragmentTabAdapter;
 import com.example.sijia.myapplication.FormatAdapter.FormatFragmentTabAdapter;
+import com.example.sijia.myapplication.FormatAdapter.FragmentTabAdapter;
 import com.example.sijia.myapplication.fragment.MyFragment;
 
 import java.util.ArrayList;
