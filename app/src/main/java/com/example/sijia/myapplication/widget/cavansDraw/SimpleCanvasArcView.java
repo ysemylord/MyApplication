@@ -1,4 +1,4 @@
-package com.example.sijia.myapplication.widget;
+package com.example.sijia.myapplication.widget.cavansDraw;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,16 +11,16 @@ import android.view.View;
 /**
  * Created by Administrator on 2016/7/15.
  */
-public class SimpleCanvasRoundView extends View {
-    public SimpleCanvasRoundView(Context context) {
+public class SimpleCanvasArcView extends View {
+    public SimpleCanvasArcView(Context context) {
         super(context);
     }
 
-    public SimpleCanvasRoundView(Context context, AttributeSet attrs) {
+    public SimpleCanvasArcView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SimpleCanvasRoundView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SimpleCanvasArcView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -30,6 +30,6 @@ public class SimpleCanvasRoundView extends View {
         Paint paint=new Paint();
         paint.setColor(Color.RED);
         RectF rect=new RectF(0,0,200,200);
-        canvas.drawRoundRect(rect,50,50,paint);
+        canvas.drawArc(rect,0f,40f,true,paint);
     }
 }

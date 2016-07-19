@@ -1,26 +1,26 @@
-package com.example.sijia.myapplication.widget;
+package com.example.sijia.myapplication.widget.cavansDraw;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
 /**
  * Created by Administrator on 2016/7/15.
  */
-public class SimpleCanvasView extends View {
-    public SimpleCanvasView(Context context) {
+public class SimpleCanvasOvalView extends View {
+    public SimpleCanvasOvalView(Context context) {
         super(context);
     }
 
-    public SimpleCanvasView(Context context, AttributeSet attrs) {
+    public SimpleCanvasOvalView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SimpleCanvasView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SimpleCanvasOvalView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -29,7 +29,7 @@ public class SimpleCanvasView extends View {
         super.onDraw(canvas);
         Paint paint=new Paint();
         paint.setColor(Color.RED);
-        Rect rect=new Rect(0,0,200,200);
-        canvas.drawRect(rect,paint);
+        RectF rect=new RectF(0,0,500,200);
+        canvas.drawOval(rect,paint);//画的是矩形的内切椭圆,如果矩形是正方形，那么椭圆就是圆
     }
 }
