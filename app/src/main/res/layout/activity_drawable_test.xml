@@ -17,8 +17,7 @@
     <com.example.sijia.myapplication.widget.cavansDraw.SimpleCanvasRoundView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        ></com.example.sijia.myapplication.widget.cavansDraw.SimpleCanvasRoundView>
+        android:visibility="gone"></com.example.sijia.myapplication.widget.cavansDraw.SimpleCanvasRoundView>
 
     <com.example.sijia.myapplication.widget.cavansDraw.SimpleCanvasOvalView
         android:layout_width="wrap_content"
@@ -29,5 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"></com.example.sijia.myapplication.widget.cavansDraw.SimpleCanvasOvalView>
+
+    <com.example.sijia.myapplication.widget.cavansDraw.SimpleKUANGlView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"></com.example.sijia.myapplication.widget.cavansDraw.SimpleKUANGlView>
 
 </RelativeLayout>
