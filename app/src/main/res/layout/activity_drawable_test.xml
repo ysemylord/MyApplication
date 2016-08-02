@@ -29,9 +29,26 @@
         android:layout_height="wrap_content"
         android:visibility="gone"></com.example.sijia.myapplication.widget.cavansDraw.SimpleCanvasOvalView>
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <com.example.sijia.myapplication.widget.cavansDraw.SimpleKUANGlView
+        android:text="今日送达"
+        android:button="@null"
+        android:padding="4dp"
+        android:textColor="@color/tab_tadio_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"></com.example.sijia.myapplication.widget.cavansDraw.SimpleKUANGlView>
 
+        <com.example.sijia.myapplication.widget.cavansDraw.SimpleKUANGlView
+            android:layout_marginTop="10dp"
+            android:text="下一配送日2015年10月15日"
+            android:textColor="@color/tab_tadio_color"
+            android:button="@null"
+            android:padding="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"></com.example.sijia.myapplication.widget.cavansDraw.SimpleKUANGlView>
+    </RadioGroup>
 </RelativeLayout>

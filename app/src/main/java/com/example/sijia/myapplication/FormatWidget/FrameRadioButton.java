@@ -1,4 +1,4 @@
-package com.example.sijia.myapplication.widget.cavansDraw;
+package com.example.sijia.myapplication.FormatWidget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,19 +9,20 @@ import android.util.Log;
 import android.widget.RadioButton;
 
 /**
- * Created by Administrator on 2016/7/15.
+ * Created by  on 2016/7/15.
+ * 含有框框的RadioButton
  */
-public class SimpleKUANGlView extends RadioButton {
+public class FrameRadioButton extends RadioButton {
     float line_width=10f;
-    public SimpleKUANGlView(Context context) {
+    public FrameRadioButton(Context context) {
         super(context);
     }
 
-    public SimpleKUANGlView(Context context, AttributeSet attrs) {
+    public FrameRadioButton(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SimpleKUANGlView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FrameRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

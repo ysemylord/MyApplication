@@ -18,8 +18,7 @@ public class ObservableTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_observable_test);
-        ActivityObservableTestBinding activityObservableTestBinding = null;
-        activityObservableTestBinding = DataBindingUtil.setContentView(this, R.layout.activity_observable_test);
+        ActivityObservableTestBinding activityObservableTestBinding = DataBindingUtil.setContentView(this, R.layout.activity_observable_test);
         mObservableUser = new ObservableUser();
         mObservableUser.setmFirstName("巫妖");
         mObservableUser.setAge("90岁");

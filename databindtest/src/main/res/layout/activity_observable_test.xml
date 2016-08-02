@@ -72,8 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/button2"
-            tools:text="John Doe"
-            android:text="@{painUser.age}" />
+            android:text="@{painUser.age}"
+            tools:text="John Doe" />
 
         <TextView
             android:id="@+id/textView3"

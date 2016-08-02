@@ -13,6 +13,15 @@ public class ObservableUser extends BaseObservable {
     private String mFirstName;
     private String mAge;
 
+    public ObservableUser(String mFirstName, String mAge) {
+        this.mFirstName = mFirstName;
+        this.mAge = mAge;
+    }
+
+    public ObservableUser() {
+
+    }
+
     @Bindable
     public String getFirstName() {
         return mFirstName;
