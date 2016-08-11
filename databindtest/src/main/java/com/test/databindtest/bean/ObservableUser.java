@@ -10,12 +10,12 @@ import com.test.databindtest.BR;
  * 绑定过后BR文件中的映射名为xxxYyy 单词首字母小写
  */
 public class ObservableUser extends BaseObservable {
-    private String mFirstName;
-    private String mAge;
+    private String firstName;
+    private String age;
 
-    public ObservableUser(String mFirstName, String mAge) {
-        this.mFirstName = mFirstName;
-        this.mAge = mAge;
+    public ObservableUser(String firstName, String age) {
+        this.firstName = firstName;
+        this.age = age;
     }
 
     public ObservableUser() {
@@ -24,22 +24,22 @@ public class ObservableUser extends BaseObservable {
 
     @Bindable
     public String getFirstName() {
-        return mFirstName;
+        return firstName;
     }
 
     @Bindable
     public String getAge() {
-        return mAge;
+        return age;
     }
 
-    public void setmFirstName(String mFirstName) {
-        this.mFirstName = mFirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
         notifyPropertyChanged(BR.firstName);
     }
 
 
     public void setAge(String mAge) {
-        this.mAge = mAge;
+        this.age = mAge;
         notifyPropertyChanged(BR.age);
     }
 }

@@ -20,7 +20,7 @@ public class ObservableTestActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_observable_test);
         ActivityObservableTestBinding activityObservableTestBinding = DataBindingUtil.setContentView(this, R.layout.activity_observable_test);
         mObservableUser = new ObservableUser();
-        mObservableUser.setmFirstName("巫妖");
+        mObservableUser.setFirstName("巫妖");
         mObservableUser.setAge("90岁");
         activityObservableTestBinding.setUser(mObservableUser);
 
@@ -34,7 +34,7 @@ public class ObservableTestActivity extends AppCompatActivity {
 
     public void nority_data_change(View view) {
         String domain = Math.random() + "";
-        mObservableUser.setmFirstName(domain + "-巫妖");
+        mObservableUser.setFirstName(domain + "-巫妖");
         mObservableUser.setAge(domain + "-90岁");
 
     }

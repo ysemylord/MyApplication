@@ -215,11 +215,14 @@
             -->
         </activity>
         <activity android:name=".TestActivity.DrawableTestActivity">
-           <!-- <intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".TestActivity.ObjectAnimationActivity">
 
@@ -232,12 +235,18 @@
             -->
         </activity>
         <activity android:name=".TestActivity.LibsTestActivity">
+          <!--  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".TestActivity.widgetTestAcitvity.InScrollViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
