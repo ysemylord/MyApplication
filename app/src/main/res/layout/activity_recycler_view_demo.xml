@@ -10,12 +10,9 @@
     tools:context="com.example.sijia.myapplication.RecyclerViewDemoActivity">
 
 
-
-
-
-            <com.jcodecraeer.xrecyclerview.XRecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 </RelativeLayout>

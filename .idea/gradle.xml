@@ -18,19 +18,7 @@
             <option value="$PROJECT_DIR$/wifiConnecter" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Assistlibrary" />
-            <option value="$PROJECT_DIR$/TabHost" />
-            <option value="$PROJECT_DIR$/WechatTab" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/cameramine" />
-            <option value="$PROJECT_DIR$/databindtest" />
-            <option value="$PROJECT_DIR$/rxlearn" />
-            <option value="$PROJECT_DIR$/wifiConnecter" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
